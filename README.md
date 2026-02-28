@@ -1,6 +1,6 @@
-# TechNest – Front-End eCommerce Web Application
+# TechNest - Front-End eCommerce Web Application
 
-TechNest is a client-side eCommerce web application built for a fictional electronics and gadgets retailer. It was developed as part of a final year project at Atlantic Technological University.
+TechNest is a client-side eCommerce web application built for a fictional electronics and gadgets retailer. It was developed as part of a final semester project at Atlantic Technological University.
 
 The application lets users browse products, filter and search the catalogue, view individual product pages, manage a shopping basket, and go through a checkout process. Everything runs in the browser with no back-end or server required.
 
@@ -22,12 +22,12 @@ The basket contents are saved to localStorage, which means they are not lost if 
 - Sort products by price (low to high / high to low)
 - Individual product detail pages loaded using URL parameters
 - Add products to basket with quantity selection
-- Basket with full CRUD — add, update quantity, remove items
+- Basket with full CRUD - add, update quantity, remove items
 - Automatic basket total calculation
 - Basket saved to localStorage so it persists on page refresh
 - Checkout form with client-side validation
-- Confirmation message shown after successful checkout
-- Fully responsive layout — works on desktop, tablet, and mobile
+- Confirmation message shown after a successful checkout
+- Fully responsive layout - works on desktop, tablet and mobile
 
 ---
 
@@ -62,8 +62,10 @@ technest-webapp/
 │   │   ├── Basket.js
 │   │   └── Storage.js
 │   └── pages/
-└── assets/
-    └── images/
+├── assets/
+│   └── images/
+└── docs/
+    └── diagrams/
 ```
 
 ---
@@ -79,9 +81,9 @@ Then open `index.html` directly in Chrome or Firefox.
 
 ---
 
-## Development Progress
+## Weekly Progress
 
-This project is being built over 10 weeks following an incremental development approach.
+This project is being built over 10 weeks.
 
 | Week | Focus |
 |------|-------|
