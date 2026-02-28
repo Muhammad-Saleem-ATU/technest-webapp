@@ -229,3 +229,6 @@ on right), footer.
 - Described the layout and elements for all five pages
 - Created the GitHub repository and set up the initial folder structure
 - Made the first commit
+
+**Next week:** Build the HTML structure for all five pages including the
+shared navigation bar and footer.
