@@ -102,5 +102,5 @@ This project is being built over 10 weeks following an incremental development a
 
 Muhammad Saleem  
 Student No: L00196822  
-Module: PROJ_IT805 - LY_ICSWD_B: Project (2025/26) 
+Module: PROJ_IT805 - LY_ICSWD_B: Project (2025/26)  
 Atlantic Technological University
