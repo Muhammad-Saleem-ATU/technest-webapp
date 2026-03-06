@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 780" width="1140" height="780" font-family="Arial, sans-serif">
+  <rect width="1140" height="780" fill="white"/>
+  <text x="570" y="34" text-anchor="middle" font-size="18" font-weight="bold" fill="#1F1F1F">TechNest – Layered Architecture Diagram</text>
+
+  <!-- Layer labels -->
+  <rect x="10" y="55"  width="110" height="140" fill="#5B9BD5" rx="4"/>
+  <text transform="translate(65,125) rotate(-90)" text-anchor="middle" font-size="13" font-weight="bold" fill="white" dy="-8">Presentation</text>
+  <text transform="translate(65,125) rotate(-90)" text-anchor="middle" font-size="10" fill="white" dy="8">(UI Layer)</text>
+
+  <rect x="10" y="215" width="110" height="230" fill="#5B9BD5" rx="4"/>
+  <text transform="translate(65,330) rotate(-90)" text-anchor="middle" font-size="13" font-weight="bold" fill="white" dy="-8">Logic</text>
+  <text transform="translate(65,330) rotate(-90)" text-anchor="middle" font-size="10" fill="white" dy="8">(Business Layer)</text>
+
+  <rect x="10" y="465" width="110" height="160" fill="#5B9BD5" rx="4"/>
+  <text transform="translate(65,545) rotate(-90)" text-anchor="middle" font-size="13" font-weight="bold" fill="white" dy="-8">Data</text>
+  <text transform="translate(65,545) rotate(-90)" text-anchor="middle" font-size="10" fill="white" dy="8">(Storage Layer)</text>
+
+  <rect x="10" y="645" width="110" height="100" fill="#70AD47" rx="4"/>
+  <text transform="translate(65,695) rotate(-90)" text-anchor="middle" font-size="13" font-weight="bold" fill="white" dy="-8">Browser</text>
+  <text transform="translate(65,695) rotate(-90)" text-anchor="middle" font-size="10" fill="white" dy="8">(Runtime)</text>
+
+  <!-- LAYER 1 PRESENTATION y=55 h=140 -->
+  <rect x="130" y="55" width="995" height="140" fill="#DEEAF1" stroke="#5B9BD5" stroke-width="1.5" rx="4"/>
+  <rect x="142" y="68" width="170" height="46" fill="#B8D4E8" stroke="#5B9BD5" stroke-width="1.5" rx="3"/>
+  <text x="227" y="87" text-anchor="middle" font-size="12" font-weight="bold" fill="#1F1F1F">index.html</text>
+  <text x="227" y="103" text-anchor="middle" font-size="10" fill="#444">Home Page</text>
+
+  <rect x="328" y="68" width="170" height="46" fill="#B8D4E8" stroke="#5B9BD5" stroke-width="1.5" rx="3"/>
+  <text x="413" y="87" text-anchor="middle" font-size="12" font-weight="bold" fill="#1F1F1F">products.html</text>
+  <text x="413" y="103" text-anchor="middle" font-size="10" fill="#444">Product Listing</text>
+
+  <rect x="514" y="68" width="170" height="46" fill="#B8D4E8" stroke="#5B9BD5" stroke-width="1.5" rx="3"/>
+  <text x="599" y="87" text-anchor="middle" font-size="12" font-weight="bold" fill="#1F1F1F">product-detail.html</text>
+  <text x="599" y="103" text-anchor="middle" font-size="10" fill="#444">Product Detail</text>
+
+  <rect x="700" y="68" width="170" height="46" fill="#B8D4E8" stroke="#5B9BD5" stroke-width="1.5" rx="3"/>
+  <text x="785" y="87" text-anchor="middle" font-size="12" font-weight="bold" fill="#1F1F1F">basket.html</text>
+  <text x="785" y="103" text-anchor="middle" font-size="10" fill="#444">Basket Page</text>
+
+  <rect x="886" y="68" width="170" height="46" fill="#B8D4E8" stroke="#5B9BD5" stroke-width="1.5" rx="3"/>
+  <text x="971" y="87" text-anchor="middle" font-size="12" font-weight="bold" fill="#1F1F1F">checkout.html</text>
+  <text x="971" y="103" text-anchor="middle" font-size="10" fill="#444">Checkout Page</text>
+
+  <rect x="142" y="126" width="914" height="58" fill="#E2EFDA" stroke="#70AD47" stroke-width="1.5" rx="3"/>
+  <text x="599" y="151" text-anchor="middle" font-size="12" font-weight="bold" fill="#375623">style.css  +  Bootstrap 5</text>
+  <text x="599" y="168" text-anchor="middle" font-size="10" fill="#375623">Shared styling and responsive grid — loaded on every page</text>
+
+  <!-- Arrow 1 to 2 -->
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#888"/>
+    </marker>
+  </defs>
+  <line x1="635" y1="196" x2="635" y2="213" stroke="#888" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+
+  <!-- LAYER 2 LOGIC y=215 h=230 -->
+  <rect x="130" y="215" width="995" height="230" fill="#DEEAF1" stroke="#5B9BD5" stroke-width="1.5" rx="4"/>
+  <text x="635" y="234" text-anchor="middle" font-size="11" fill="#555" font-style="italic">Page-specific rendering scripts  (js/pages/)</text>
+
+  <!-- products.js -->
+  <rect x="142" y="240" width="228" height="90" fill="#FFF2CC" stroke="#C0A000" stroke-width="1.5" rx="3"/>
+  <text x="256" y="258" text-anchor="middle" font-size="12" font-weight="bold" fill="#1F1F1F">products.js</text>
+  <line x1="142" y1="264" x2="370" y2="264" stroke="#C0A000" stroke-width="1"/>
+  <text x="151" y="279" font-size="10" fill="#444">renderProducts(data)</text>
+  <text x="151" y="293" font-size="10" fill="#444">filterByCategory(cat)</text>
+  <text x="151" y="307" font-size="10" fill="#444">searchProducts(query)</text>
+  <text x="151" y="321" font-size="10" fill="#444">sortProducts(order)</text>
+
+  <!-- product-detail.js -->
+  <rect x="382" y="240" width="228" height="90" fill="#FFF2CC" stroke="#C0A000" stroke-width="1.5" rx="3"/>
+  <text x="496" y="258" text-anchor="middle" font-size="12" font-weight="bold" fill="#1F1F1F">product-detail.js</text>
+  <line x1="382" y1="264" x2="610" y2="264" stroke="#C0A000" stroke-width="1"/>
+  <text x="391" y="279" font-size="10" fill="#444">getURLParam(key)</text>
+  <text x="391" y="293" font-size="10" fill="#444">loadProductById(id)</text>
+  <text x="391" y="307" font-size="10" fill="#444">renderProductDetail()</text>
+  <text x="391" y="321" font-size="10" fill="#444">handleAddToBasket()</text>
+
+  <!-- basket.js -->
+  <rect x="622" y="240" width="228" height="90" fill="#FFF2CC" stroke="#C0A000" stroke-width="1.5" rx="3"/>
+  <text x="736" y="258" text-anchor="middle" font-size="12" font-weight="bold" fill="#1F1F1F">basket.js</text>
+  <line x1="622" y1="264" x2="850" y2="264" stroke="#C0A000" stroke-width="1"/>
+  <text x="631" y="279" font-size="10" fill="#444">renderBasketItems()</text>
+  <text x="631" y="293" font-size="10" fill="#444">updateItemQty(id, qty)</text>
+  <text x="631" y="307" font-size="10" fill="#444">removeItem(id)</text>
+  <text x="631" y="321" font-size="10" fill="#444">updateTotalDisplay()</text>
+
+  <!-- checkout.js -->
+  <rect x="862" y="240" width="228" height="90" fill="#FFF2CC" stroke="#C0A000" stroke-width="1.5" rx="3"/>
+  <text x="976" y="258" text-anchor="middle" font-size="12" font-weight="bold" fill="#1F1F1F">checkout.js</text>
+  <line x1="862" y1="264" x2="1090" y2="264" stroke="#C0A000" stroke-width="1"/>
+  <text x="871" y="279" font-size="10" fill="#444">validateForm()</text>
+  <text x="871" y="293" font-size="10" fill="#444">validateField(field)</text>
+  <text x="871" y="307" font-size="10" fill="#444">showConfirmation()</text>
+  <text x="871" y="321" font-size="10" fill="#444">clearBasketOnOrder()</text>
+
+  <!-- Class models label -->
+  <text x="635" y="352" text-anchor="middle" font-size="11" fill="#555" font-style="italic">ES6 class models  (js/models/)</text>
+
+  <!-- Basket.js -->
+  <rect x="142" y="360" width="472" height="72" fill="#B8D4E8" stroke="#5B9BD5" stroke-width="1.5" rx="3"/>
+  <text x="378" y="378" text-anchor="middle" font-size="12" font-weight="bold" fill="#1F1F1F">Basket.js</text>
+  <line x1="142" y1="384" x2="614" y2="384" stroke="#5B9BD5" stroke-width="1"/>
+  <text x="151" y="399" font-size="10" fill="#1F1F1F">items : Array</text>
+  <text x="151" y="414" font-size="10" fill="#1F1F1F">addItem(product, qty)  |  updateQty(id, qty)  |  removeItem(id)  |  getTotal()  |  getCount()  |  clear()</text>
+  <text x="151" y="426" font-size="10" fill="#1F1F1F">loadFromStorage()  |  saveToStorage()  |  isEmpty()</text>
+
+  <!-- Product.js -->
+  <rect x="626" y="360" width="464" height="72" fill="#B8D4E8" stroke="#5B9BD5" stroke-width="1.5" rx="3"/>
+  <text x="858" y="378" text-anchor="middle" font-size="12" font-weight="bold" fill="#1F1F1F">Product.js</text>
+  <line x1="626" y1="384" x2="1090" y2="384" stroke="#5B9BD5" stroke-width="1"/>
+  <text x="635" y="399" font-size="10" fill="#1F1F1F">id : String  |  name : String  |  price : Number  |  category : String  |  description : String  |  image : String</text>
+  <text x="635" y="414" font-size="10" fill="#1F1F1F">constructor(id, name, price, category, description, image)</text>
+  <text x="635" y="426" font-size="10" fill="#1F1F1F">getSummary() : String</text>
+
+  <!-- Arrow 2 to 3 -->
+  <line x1="635" y1="447" x2="635" y2="463" stroke="#888" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+
+  <!-- LAYER 3 DATA y=465 h=160 -->
+  <rect x="130" y="465" width="995" height="160" fill="#DEEAF1" stroke="#5B9BD5" stroke-width="1.5" rx="4"/>
+
+  <rect x="142" y="480" width="300" height="128" fill="#B8D4E8" stroke="#5B9BD5" stroke-width="1.5" rx="3"/>
+  <text x="292" y="499" text-anchor="middle" font-size="12" font-weight="bold" fill="#1F1F1F">StorageManager.js</text>
+  <line x1="142" y1="506" x2="442" y2="506" stroke="#5B9BD5" stroke-width="1"/>
+  <text x="151" y="522" font-size="10" fill="#1F1F1F">KEY : String</text>
+  <line x1="142" y1="530" x2="442" y2="530" stroke="#5B9BD5" stroke-width="1"/>
+  <text x="151" y="546" font-size="10" fill="#1F1F1F">constructor(key)</text>
+  <text x="151" y="561" font-size="10" fill="#1F1F1F">save(data) : void</text>
+  <text x="151" y="576" font-size="10" fill="#1F1F1F">load() : Array</text>
+  <text x="151" y="591" font-size="10" fill="#1F1F1F">clear() : void</text>
+  <text x="151" y="602" font-size="10" fill="#1F1F1F">exists() : Boolean</text>
+
+  <rect x="458" y="480" width="280" height="128" fill="#FFF2CC" stroke="#C0A000" stroke-width="1.5" rx="3"/>
+  <text x="598" y="499" text-anchor="middle" font-size="12" font-weight="bold" fill="#1F1F1F">products.js  (js/data/)</text>
+  <line x1="458" y1="506" x2="738" y2="506" stroke="#C0A000" stroke-width="1"/>
+  <text x="467" y="522" font-size="10" fill="#444">Static array of Product objects</text>
+  <text x="467" y="537" font-size="10" fill="#444">Single source of truth for all</text>
+  <text x="467" y="552" font-size="10" fill="#444">product data in the application</text>
+  <text x="467" y="572" font-size="10" fill="#888" font-style="italic">Read-only — never modified at runtime</text>
+
+  <rect x="756" y="480" width="357" height="128" fill="#F4F4F4" stroke="#AAAAAA" stroke-width="1.5" rx="3" stroke-dasharray="6,3"/>
+  <text x="934" y="505" text-anchor="middle" font-size="12" font-weight="bold" fill="#888">No Backend / No Database</text>
+  <line x1="756" y1="512" x2="1113" y2="512" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="934" y="529" text-anchor="middle" font-size="10" fill="#999">No server, no API, no database.</text>
+  <text x="934" y="544" text-anchor="middle" font-size="10" fill="#999">All data is handled entirely within</text>
+  <text x="934" y="559" text-anchor="middle" font-size="10" fill="#999">the browser. This is an intentional</text>
+  <text x="934" y="574" text-anchor="middle" font-size="10" fill="#999">design choice for this project.</text>
+
+  <!-- Arrow 3 to 4 -->
+  <line x1="350" y1="627" x2="350" y2="643" stroke="#888" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+
+  <!-- LAYER 4 BROWSER y=645 h=100 -->
+  <rect x="130" y="645" width="995" height="100" fill="#E2EFDA" stroke="#70AD47" stroke-width="1.5" rx="4"/>
+
+  <rect x="142" y="658" width="260" height="70" fill="#C6EFCE" stroke="#70AD47" stroke-width="1.5" rx="3"/>
+  <text x="272" y="677" text-anchor="middle" font-size="12" font-weight="bold" fill="#375623">localStorage API</text>
+  <line x1="142" y1="683" x2="402" y2="683" stroke="#70AD47" stroke-width="1"/>
+  <text x="272" y="699" text-anchor="middle" font-size="10" fill="#375623">Basket data persistence</text>
+  <text x="272" y="713" text-anchor="middle" font-size="10" fill="#375623">across page navigation</text>
+
+  <rect x="416" y="658" width="260" height="70" fill="#C6EFCE" stroke="#70AD47" stroke-width="1.5" rx="3"/>
+  <text x="546" y="677" text-anchor="middle" font-size="12" font-weight="bold" fill="#375623">DOM API</text>
+  <line x1="416" y1="683" x2="676" y2="683" stroke="#70AD47" stroke-width="1"/>
+  <text x="546" y="699" text-anchor="middle" font-size="10" fill="#375623">Dynamic rendering of products,</text>
+  <text x="546" y="713" text-anchor="middle" font-size="10" fill="#375623">basket and page content</text>
+
+  <rect x="690" y="658" width="290" height="70" fill="#C6EFCE" stroke="#70AD47" stroke-width="1.5" rx="3"/>
+  <text x="835" y="677" text-anchor="middle" font-size="12" font-weight="bold" fill="#375623">URL / Location API</text>
+  <line x1="690" y1="683" x2="980" y2="683" stroke="#70AD47" stroke-width="1"/>
+  <text x="835" y="699" text-anchor="middle" font-size="10" fill="#375623">URLSearchParams reads product ID</text>
+  <text x="835" y="713" text-anchor="middle" font-size="10" fill="#375623">from URL for product-detail page</text>
+
+  <text x="1060" y="693" text-anchor="middle" font-size="10" fill="#375623" font-style="italic">All APIs</text>
+  <text x="1060" y="707" text-anchor="middle" font-size="10" fill="#375623" font-style="italic">native to</text>
+  <text x="1060" y="721" text-anchor="middle" font-size="10" fill="#375623" font-style="italic">the browser</text>
+
+  <!-- Legend -->
+  <text x="20" y="762" font-size="12" font-weight="bold" fill="#1F1F1F">Legend:</text>
+  <rect x="90"  y="751" width="18" height="14" fill="#B8D4E8" stroke="#5B9BD5" stroke-width="1.5"/>
+  <text x="113" y="762" font-size="11" fill="#444">HTML Pages / JS Classes</text>
+  <rect x="300" y="751" width="18" height="14" fill="#FFF2CC" stroke="#C0A000" stroke-width="1.5"/>
+  <text x="323" y="762" font-size="11" fill="#444">Page Scripts / Data Files</text>
+  <rect x="510" y="751" width="18" height="14" fill="#C6EFCE" stroke="#70AD47" stroke-width="1.5"/>
+  <text x="533" y="762" font-size="11" fill="#444">Browser APIs</text>
+  <rect x="660" y="751" width="18" height="14" fill="#F4F4F4" stroke="#AAAAAA" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="683" y="762" font-size="11" fill="#444">Not used (intentional)</text>
+</svg>
