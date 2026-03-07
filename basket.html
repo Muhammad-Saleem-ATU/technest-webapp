@@ -1,1 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNest - Basket</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">TechNest</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="basket.html">
+                            Basket
+                            <span class="badge bg-danger ms-1" id="basket-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="bg-light py-4">
+        <div class="container">
+            <h1>Your Basket</h1>
+        </div>
+    </section>
+
+    <!-- Basket Content -->
+    <main class="py-5">
+        <div class="container">
+            <div class="row g-4">
+
+                <!-- Left Column - Basket Items -->
+                <div class="col-lg-8">
+                    <div id="basket-items">
+                        <!-- Basket items will be loaded here by JavaScript in week 7 -->
+                        <!-- Empty basket message shown by default -->
+                        <div id="empty-basket-message">
+                            <p class="text-muted">Your basket is empty.</p>
+                            <a href="products.html" class="btn btn-outline-dark">
+                                Continue Shopping
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Order Summary -->
+                <div class="col-lg-4">
+                    <div class="border p-4">
+                        <h4>Order Summary</h4>
+                        <hr>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Subtotal</span>
+                            <span id="basket-subtotal">€0.00</span>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between fw-bold mb-4">
+                            <span>Total</span>
+                            <span id="basket-total">€0.00</span>
+                        </div>
+                        <a href="checkout.html" class="btn btn-dark w-100">
+                            Proceed to Checkout
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <div class="container">
+            <p class="mb-0">TechNest &mdash; Muhammad Saleem &mdash; L00196822 &mdash; ATU</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Page JS will be added in week 7 -->
+
+</body>
+</html>
