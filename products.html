@@ -1,1 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNest - Products</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">TechNest</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="basket.html">
+                            Basket
+                            <span class="badge bg-danger ms-1" id="basket-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="bg-light py-4">
+        <div class="container">
+            <h1>Products</h1>
+            <p class="text-muted">Browse our full range of electronics and gadgets.</p>
+        </div>
+    </section>
+
+    <!-- Search and Sort -->
+    <section class="py-3">
+        <div class="container">
+            <div class="row g-2">
+                <div class="col-md-6">
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="search-input"
+                        placeholder="Search products...">
+                </div>
+                <div class="col-md-3">
+                    <select class="form-select" id="sort-select">
+                        <option value="">Sort by</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Filter Buttons -->
+    <section class="pb-3">
+        <div class="container">
+            <button class="btn btn-dark m-1" id="filter-all">All</button>
+            <button class="btn btn-outline-dark m-1" id="filter-laptops">Laptops</button>
+            <button class="btn btn-outline-dark m-1" id="filter-phones">Phones</button>
+            <button class="btn btn-outline-dark m-1" id="filter-accessories">Accessories</button>
+        </div>
+    </section>
+
+    <!-- Product Grid -->
+    <section class="py-4">
+        <div class="container">
+            <div class="row g-4" id="product-grid">
+                <!-- Product cards will be loaded here dynamically in week 5 -->
+                <p class="text-muted">Products will load here.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <div class="container">
+            <p class="mb-0">TechNest &mdash; Muhammad Saleem &mdash; L00196822 &mdash; ATU</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
