@@ -1,20 +1,20 @@
 # TechNest - Front-End eCommerce Web Application
 
-TechNest is a client-side eCommerce web application built for a fictional electronics and gadgets retailer. It was developed as part of a final semester project at Atlantic Technological University.
+TechNest is a client-side eCommerce web application built for a fictional electronics and gadgets retailer. It is being developed as part of a final semester project at Atlantic Technological University.
 
-The application lets users browse products, filter and search the catalogue, view individual product pages, manage a shopping basket, and go through a checkout process. Everything runs in the browser with no back-end or server required.
+The application will let users browse products, filter and search the catalogue, view individual product pages, manage a shopping basket, and go through a checkout process. Everything will run in the browser with no back-end or server required.
 
 ---
 
 ## About the Project
 
-The goal of this project was not just to build a shop interface, but to practise writing well-structured, modular JavaScript using Object-Oriented Programming principles. The code is split into separate classes and modules so that each file has one clear job.
+The goal of this project is not just to build a shop interface, but to practise writing well-structured, modular JavaScript using Object-Oriented Programming principles. The code will be split into separate classes and modules so that each file has one clear job.
 
-The basket contents are saved to localStorage, which means they are not lost if the user refreshes the page.
+The basket contents will be saved to localStorage, which means they will not be lost if the user refreshes the page.
 
 ---
 
-## Features
+## Features (Planned)
 
 - Product listing page with all products loaded from a JavaScript data file
 - Filter products by category
@@ -45,6 +45,11 @@ The basket contents are saved to localStorage, which means they are not lost if 
 ---
 
 ## Project Structure
+
+This is the current state of the project at the end of week 2. The HTML structure
+for all five pages has been built. The js/ folders and css/ file exist but are empty
+at this stage — styling and JavaScript will be added in later weeks.
+
 ```
 technest-webapp/
 ├── index.html
@@ -53,17 +58,13 @@ technest-webapp/
 ├── basket.html
 ├── checkout.html
 ├── css/
-│   └── style.css
+│   └── style.css              (empty - added week 3)
 ├── js/
-│   ├── data/
-│   │   └── products.js
-│   ├── models/
-│   │   ├── Product.js
-│   │   ├── Basket.js
-│   │   └── Storage.js
-│   └── pages/
+│   ├── data/                  (empty - added week 5)
+│   ├── models/                (empty - added week 4+)
+│   └── pages/                 (empty - added week 5+)
 ├── assets/
-│   └── images/
+│   └── images/                (empty - added week 5)
 └── docs/
     └── diagrams/
 ```
@@ -85,18 +86,18 @@ Then open `index.html` directly in Chrome or Firefox.
 
 This project is being built over 10 weeks.
 
-| Week | Focus |
-|------|-------|
-| Week 1 | Requirements, wireframes, architecture planning, repo setup |
-| Week 2 | Core HTML structure for all pages |
-| Week 3 | CSS styling and Bootstrap responsive layout |
-| Week 4 | JavaScript data modelling and OOP class structure |
-| Week 5 | Dynamic product rendering, filtering and search |
-| Week 6 | Product detail page and URL parameter handling |
-| Week 7 | Basket CRUD and localStorage integration |
-| Week 8 | Checkout form and client-side validation |
-| Week 9 | Testing and code refactoring |
-| Week 10 | Final touches and documentation |
+| Week | Focus | Status |
+|------|-------|--------|
+| Week 1 | Requirements, wireframes, architecture planning, repo setup | Done |
+| Week 2 | Structural diagrams, core HTML structure for all pages | Done |
+| Week 3 | CSS styling and Bootstrap responsive layout | Upcoming |
+| Week 4 | JavaScript data modelling and OOP class structure | Upcoming |
+| Week 5 | Dynamic product rendering, filtering and search | Upcoming |
+| Week 6 | Product detail page and URL parameter handling | Upcoming |
+| Week 7 | Basket CRUD and localStorage integration | Upcoming |
+| Week 8 | Checkout form and client-side validation | Upcoming |
+| Week 9 | Testing and code refactoring | Upcoming |
+| Week 10 | Final touches and documentation | Upcoming |
 
 ---
 
