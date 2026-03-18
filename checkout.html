@@ -4,196 +4,142 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechNest - Checkout</title>
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="index.html">TechNest</a>
+            <a class="navbar-brand" href="index.html">Tech<span>Nest</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="products.html">Products</a>
                     </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="basket.html">
+                        <a class="nav-link basket-nav-link" href="basket.html">
+                            <span class="basket-icon">&#128722;</span>
                             Basket
-                            <span class="badge bg-danger ms-1" id="basket-count">0</span>
+                            <span class="badge" id="basket-count">0</span>
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+    <!-- ==================== END NAVBAR ==================== -->
 
-    <!-- Page Header -->
-    <section class="bg-light py-4">
+    <div class="page-header">
         <div class="container">
             <h1>Checkout</h1>
         </div>
-    </section>
+    </div>
 
-    <!-- Checkout Content -->
     <main class="py-5">
         <div class="container">
 
-            <!-- Confirmation Message - hidden by default, shown after order placed -->
-            <div id="confirmation-message" class="alert alert-success d-none" role="alert">
-                <h4 class="alert-heading">Thank you for your order!</h4>
+            <!-- Confirmation - hidden by default -->
+            <div id="confirmation-message" class="d-none mb-4">
+                <h4>Thank you for your order!</h4>
                 <p>Your order has been placed successfully. We hope you enjoy your purchase.</p>
+                <a href="products.html" class="btn btn-primary mt-3">Continue Shopping</a>
             </div>
 
-            <!-- Checkout Form and Summary -->
             <div class="row g-4" id="checkout-content">
 
-                <!-- Left Column - Checkout Form -->
+                <!-- Left - Form -->
                 <div class="col-lg-7">
                     <form id="checkout-form" novalidate>
 
-                        <!-- Personal Details -->
-                        <h4 class="mb-3">Personal Details</h4>
-                        <div class="row g-3 mb-4">
+                        <h5 class="checkout-section-title">Personal Details</h5>
+                        <div class="row g-3 mb-2">
                             <div class="col-md-6">
                                 <label for="first-name" class="form-label">First Name</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="first-name"
-                                    placeholder="John"
-                                    required>
+                                <input type="text" class="form-control" id="first-name" placeholder="John" required>
                                 <div class="invalid-feedback">Please enter your first name.</div>
                             </div>
                             <div class="col-md-6">
                                 <label for="last-name" class="form-label">Last Name</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="last-name"
-                                    placeholder="Smith"
-                                    required>
+                                <input type="text" class="form-control" id="last-name" placeholder="Smith" required>
                                 <div class="invalid-feedback">Please enter your last name.</div>
                             </div>
                             <div class="col-12">
                                 <label for="email" class="form-label">Email Address</label>
-                                <input
-                                    type="email"
-                                    class="form-control"
-                                    id="email"
-                                    placeholder="john@example.com"
-                                    required>
+                                <input type="email" class="form-control" id="email" placeholder="john@example.com" required>
                                 <div class="invalid-feedback">Please enter a valid email address.</div>
                             </div>
                         </div>
 
-                        <!-- Delivery Address -->
-                        <h4 class="mb-3">Delivery Address</h4>
-                        <div class="row g-3 mb-4">
+                        <h5 class="checkout-section-title">Delivery Address</h5>
+                        <div class="row g-3 mb-2">
                             <div class="col-12">
                                 <label for="address-1" class="form-label">Address Line 1</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="address-1"
-                                    placeholder="123 Main Street"
-                                    required>
+                                <input type="text" class="form-control" id="address-1" placeholder="123 Main Street" required>
                                 <div class="invalid-feedback">Please enter your address.</div>
                             </div>
                             <div class="col-12">
                                 <label for="address-2" class="form-label">
                                     Address Line 2 <span class="text-muted">(optional)</span>
                                 </label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="address-2"
-                                    placeholder="Apartment, suite, etc.">
+                                <input type="text" class="form-control" id="address-2" placeholder="Apartment, suite, etc.">
                             </div>
                             <div class="col-md-6">
                                 <label for="city" class="form-label">City</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="city"
-                                    placeholder="Dublin"
-                                    required>
+                                <input type="text" class="form-control" id="city" placeholder="Dublin" required>
                                 <div class="invalid-feedback">Please enter your city.</div>
                             </div>
                             <div class="col-md-6">
                                 <label for="postcode" class="form-label">Postcode</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="postcode"
-                                    placeholder="D01 AB12"
-                                    required>
+                                <input type="text" class="form-control" id="postcode" placeholder="D01 AB12" required>
                                 <div class="invalid-feedback">Please enter your postcode.</div>
                             </div>
                         </div>
 
-                        <!-- Payment Details -->
-                        <h4 class="mb-3">Payment Details</h4>
+                        <h5 class="checkout-section-title">Payment Details</h5>
                         <div class="row g-3 mb-4">
                             <div class="col-12">
                                 <label for="card-number" class="form-label">Card Number</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="card-number"
-                                    placeholder="1234 5678 9012 3456"
-                                    maxlength="19"
-                                    required>
+                                <input type="text" class="form-control" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19" required>
                                 <div class="invalid-feedback">Please enter your card number.</div>
                             </div>
                             <div class="col-md-6">
                                 <label for="expiry" class="form-label">Expiry Date</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="expiry"
-                                    placeholder="MM/YY"
-                                    maxlength="5"
-                                    required>
+                                <input type="text" class="form-control" id="expiry" placeholder="MM/YY" maxlength="5" required>
                                 <div class="invalid-feedback">Please enter the expiry date.</div>
                             </div>
                             <div class="col-md-6">
                                 <label for="cvv" class="form-label">CVV</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="cvv"
-                                    placeholder="123"
-                                    maxlength="3"
-                                    required>
+                                <input type="text" class="form-control" id="cvv" placeholder="123" maxlength="3" required>
                                 <div class="invalid-feedback">Please enter your CVV.</div>
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-dark btn-lg w-100" id="place-order-btn">
+                        <button type="submit" class="btn btn-primary btn-lg w-100" id="place-order-btn">
                             Place Order
                         </button>
 
                     </form>
                 </div>
 
-                <!-- Right Column -- Order Summary -->
+                <!-- Right - Summary -->
                 <div class="col-lg-5">
-                    <div class="border p-4">
+                    <div class="checkout-summary-box">
                         <h4>Order Summary</h4>
-                        <hr>
                         <div id="checkout-items">
-                            <!-- order items will be loaded here by JavaScript in week 8 -->
+                            <!-- loaded by JavaScript in week 8 -->
                             <p class="text-muted">No items in basket.</p>
                         </div>
-                        <hr>
-                        <div class="d-flex justify-content-between fw-bold">
+                        <div class="total-row mt-3">
                             <span>Total</span>
                             <span id="checkout-total">€0.00</span>
                         </div>
@@ -204,16 +150,62 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3 mt-5">
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="site-footer">
         <div class="container">
-            <p class="mb-0">TechNest &mdash; Muhammad Saleem &mdash; L00196822 &mdash; ATU</p>
+            <div class="row footer-top">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <span class="footer-brand">Tech<span>Nest</span></span>
+                    <p class="footer-tagline">
+                        A fictional electronics and gadgets store built as part of a
+                        final semester project at Atlantic Technological University.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon" title="Facebook">f</a>
+                        <a href="#" class="social-icon" title="Twitter / X">X</a>
+                        <a href="#" class="social-icon" title="Instagram">in</a>
+                        <a href="#" class="social-icon" title="YouTube">yt</a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-6 mb-4 mb-md-0">
+                    <p class="footer-heading">Shop</p>
+                    <ul class="footer-links">
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="products.html">Laptops</a></li>
+                        <li><a href="products.html">Phones</a></li>
+                        <li><a href="products.html">Accessories</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 col-6 mb-4 mb-md-0">
+                    <p class="footer-heading">Info</p>
+                    <ul class="footer-links">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 col-6">
+                    <p class="footer-heading">Legal</p>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    &copy; 2025 TechNest. All rights reserved. Built by Muhammad Saleem &mdash; L00196822 &mdash; ATU.
+                </p>
+                <div class="footer-legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms &amp; Conditions</a>
+                </div>
+            </div>
         </div>
     </footer>
+    <!-- ==================== END FOOTER ==================== -->
 
-    <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Page JS will be added in week 8 -->
 
 </body>
 </html>
