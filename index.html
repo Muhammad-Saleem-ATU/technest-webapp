@@ -4,75 +4,150 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechNest - Home</title>
-    <!-- Bootstrap  5  CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="index.html">TechNest</a>
+
+            <!-- Logo -->
+            <a class="navbar-brand" href="index.html">Tech<span>Nest</span></a>
+
+            <!-- Mobile toggle -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+            <!-- Nav Links -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="products.html">Products</a>
                     </li>
+                </ul>
+
+                <!-- Basket Button - right side -->
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="basket.html">
+                        <a class="nav-link basket-nav-link" href="basket.html">
+                            <span class="basket-icon">&#128722;</span>
                             Basket
-                            <span class="badge bg-danger ms-1" id="basket-count">0</span>
+                            <span class="badge" id="basket-count">0</span>
                         </a>
                     </li>
                 </ul>
             </div>
+
         </div>
     </nav>
+    <!-- ==================== END NAVBAR ==================== -->
 
     <!-- Hero Section -->
-    <section class="bg-light py-5">
-        <div class="container text-center">
-            <h1 class="display-5 fw-bold">Welcome to TechNest</h1>
-            <p class="lead">Your go-to place for the latest electronics and gadgets.</p>
-            <a href="products.html" class="btn btn-dark btn-lg mt-3">Shop Now</a>
+    <section class="hero-section">
+        <div class="container">
+            <h1>Welcome to <span>TechNest</span></h1>
+            <p>Your go-to place for the latest electronics and gadgets.</p>
+            <a href="products.html" class="btn btn-primary">Shop Now</a>
         </div>
     </section>
 
     <!-- Category Buttons -->
-    <section class="py-4">
+    <section class="category-section">
         <div class="container text-center">
-            <h2 class="mb-4">Browse by Category</h2>
-            <a href="products.html" class="btn btn-outline-dark m-1">All Products</a>
-            <a href="products.html" class="btn btn-outline-dark m-1">Laptops</a>
-            <a href="products.html" class="btn btn-outline-dark m-1">Phones</a>
-            <a href="products.html" class="btn btn-outline-dark m-1">Accessories</a>
+            <h2 class="section-title">Browse by Category</h2>
+            <a href="products.html" class="btn btn-outline-orange m-1">All Products</a>
+            <a href="products.html" class="btn btn-outline-orange m-1">Laptops</a>
+            <a href="products.html" class="btn btn-outline-orange m-1">Phones</a>
+            <a href="products.html" class="btn btn-outline-orange m-1">Accessories</a>
         </div>
     </section>
 
-    <!-- Featured Products Placeholder -->
-    <section class="py-4 bg-light">
+    <!-- Featured Products -->
+    <section class="py-5">
         <div class="container">
-            <h2 class="mb-4">Featured Products</h2>
-            <div class="row" id="featured-products">
-                <!-- Product cards will be loaded here by JavaScript in week 5 -->
+            <h2 class="section-title">Featured Products</h2>
+            <div class="row g-4" id="featured-products">
+                <!-- Loaded by JavaScript in week 5 -->
                 <p class="text-muted">Products will be displayed here.</p>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3 mt-5">
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="site-footer">
         <div class="container">
-            <p class="mb-0">TechNest &mdash; Muhammad Saleem &mdash; L00196822 &mdash; ATU</p>
+
+            <!-- Top Section -->
+            <div class="row footer-top">
+
+                <!-- Brand + Tagline + Social -->
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <span class="footer-brand">Tech<span>Nest</span></span>
+                    <p class="footer-tagline">
+                        A fictional electronics and gadgets store built as part of a
+                        final semester project at Atlantic Technological University.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon" title="Facebook">f</a>
+                        <a href="#" class="social-icon" title="Twitter / X">X</a>
+                        <a href="#" class="social-icon" title="Instagram">in</a>
+                        <a href="#" class="social-icon" title="YouTube">yt</a>
+                    </div>
+                </div>
+
+                <!-- Shop Links -->
+                <div class="col-md-2 col-6 mb-4 mb-md-0">
+                    <p class="footer-heading">Shop</p>
+                    <ul class="footer-links">
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="products.html">Laptops</a></li>
+                        <li><a href="products.html">Phones</a></li>
+                        <li><a href="products.html">Accessories</a></li>
+                    </ul>
+                </div>
+
+                <!-- Info Links -->
+                <div class="col-md-2 col-6 mb-4 mb-md-0">
+                    <p class="footer-heading">Info</p>
+                    <ul class="footer-links">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal Links -->
+                <div class="col-md-2 col-6">
+                    <p class="footer-heading">Legal</p>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    &copy; 2025 TechNest. All rights reserved. Built by Muhammad Saleem &mdash; L00196822 &mdash; ATU.
+                </p>
+                <div class="footer-legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms &amp; Conditions</a>
+                </div>
+            </div>
+
         </div>
     </footer>
+    <!-- ==================== END FOOTER ==================== -->
 
-    <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
