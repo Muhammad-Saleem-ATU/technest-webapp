@@ -16,30 +16,32 @@ The project also simulates real-world development practices by incorporating ver
 
 ## Features
 
-* Product listing page with dynamic catalogue (planned)
-* Filter products by category
-* Search products by name
-* Sort products by price
-* Individual product detail pages
-* Shopping basket with full CRUD functionality
-* Automatic price calculation
-* Basket persistence using localStorage
-* Checkout form with validation
-* Responsive design for desktop, tablet, and mobile
+- Product listing page with dynamic catalogue
+- Filter products by category
+- Search products by name
+- Sort products by price
+- Individual product detail pages (planned)
+- Shopping basket with CRUD functionality (planned)
+- Basket persistence using localStorage (planned)
+- Checkout form with validation (planned)
+- Responsive design for desktop, tablet, and mobile
+- Dynamic product rendering using JavaScript (Week 5)
+- Swiper.js product carousels (Week 5)
 
 ---
 
 ## Technologies Used
 
-* HTML5
-* CSS3
-* Bootstrap 5
-* JavaScript (ES6+)
-* localStorage API
-* Git and GitHub
-* GitHub Actions (CI/CD)
-* Visual Studio Code
-* Chrome Developer Tools
+- HTML5
+- CSS3
+- Bootstrap 5
+- JavaScript (ES6+)
+- Swiper.js
+- localStorage API
+- Git and GitHub
+- GitHub Actions (CI/CD)
+- Visual Studio Code
+- Chrome Developer Tools
 
 ---
 
@@ -47,22 +49,29 @@ The project also simulates real-world development practices by incorporating ver
 
 This project integrates DevOps practices using GitHub to support a structured and automated development workflow.
 
-* GitHub Actions is used to implement a Continuous Integration (CI) pipeline
-* Every push and pull request triggers automated checks
-* A pull request workflow is enforced for all changes to the main branch
-* Branch protection rules ensure:
+- GitHub Actions is used to implement a Continuous Integration (CI) pipeline
+- Every push and pull request triggers automated checks
+- A pull request workflow is enforced for all changes to the main branch
+- Branch protection rules ensure:
+  - Pull request approval is required before merging
+  - Code must pass CI checks before integration
+- Development is carried out using feature branches
 
-  * Pull request approval is required before merging
-  * Code must pass CI checks before integration
-* Development is carried out using feature branches (e.g. week-based branches)
+### CI Pipeline Enhancement (Week 5)
 
-These practices improve code quality, maintainability, and collaboration.
+The CI pipeline was enhanced to include:
+
+- HTML validation
+- CSS linting
+- JavaScript linting
+
+This ensures improved code quality and consistency before integration into the main branch.
 
 ---
 
 ## Project Structure
 
-The current project structure (as of Week 3) is shown below:
+The current project structure (as of Week 5) is shown below:
 
 ```
 technest-webapp/
@@ -75,8 +84,12 @@ technest-webapp/
 │   └── style.css
 ├── js/
 │   ├── data/
+│   │   └── products.js
 │   ├── models/
+│   │   └── Product.js
 │   └── pages/
+│       ├── index.js
+│       └── products.js
 ├── assets/
 │   └── images/
 ├── docs/
@@ -84,7 +97,7 @@ technest-webapp/
 │   │   ├── week1/
 │   │   ├── week2/
 │   │   ├── week3/
-│   │   └── report/
+│   │   └── week4/
 │   └── devops/
 └── structural_behavioural_interface_diagrams/
 ```
@@ -107,24 +120,24 @@ Then open `index.html` in a web browser (Chrome or Firefox recommended).
 
 ## Weekly Progress
 
-| Week    | Focus                                                             | Status    |
-| ------- | ----------------------------------------------------------------- | --------- |
-| Week 1  | Requirements, wireframes, architecture planning, repository setup | Completed |
-| Week 2  | Structural diagrams and HTML page structure                       | Completed |
-| Week 3  | CSS styling, responsive layout, DevOps CI pipeline setup          | Completed |
-| Week 4  | JavaScript data modelling and OOP class structure                 | Upcoming  |
-| Week 5  | Dynamic rendering, filtering and search                           | Upcoming  |
-| Week 6  | Product detail page functionality                                 | Upcoming  |
-| Week 7  | Basket CRUD and localStorage integration                          | Upcoming  |
-| Week 8  | Checkout and validation                                           | Upcoming  |
-| Week 9  | Testing and optimisation                                          | Upcoming  |
-| Week 10 | Final documentation and submission                                | Upcoming  |
+| Week    | Focus                                                                 | Status    |
+| ------- | --------------------------------------------------------------------- | --------- |
+| Week 1  | Requirements, wireframes, architecture planning, repository setup     | Completed |
+| Week 2  | Structural diagrams and HTML page structure                           | Completed |
+| Week 3  | CSS styling, responsive layout, DevOps CI pipeline setup              | Completed |
+| Week 4  | JavaScript data modelling (Product.js)                                | Completed |
+| Week 5  | Dynamic rendering, filtering, search, Swiper integration, CI upgrade  | Completed |
+| Week 6  | Product detail page functionality                                     | Upcoming  |
+| Week 7  | Basket CRUD and localStorage integration                              | Upcoming  |
+| Week 8  | Checkout and validation                                               | Upcoming  |
+| Week 9  | Testing and optimisation                                              | Upcoming  |
+| Week 10 | Final documentation and submission                                    | Upcoming  |
 
 ---
 
 ## Author
 
-Muhammad Saleem
-Student No: L00196822
-Module: PROJ_IT805 - Software Development Project
+Muhammad Saleem  
+Student No: L00196822  
+Module: PROJ_IT805 - Software Development Project  
 Atlantic Technological University
