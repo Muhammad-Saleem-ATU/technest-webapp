@@ -4,7 +4,7 @@
    Student No: L00196822
    Week 3 - Responsive UI Design
    Style: Dark tech store theme
-   =============================================  */
+   ============================================= */
 
 /* ---- Colour Variables ---- */
 
@@ -327,7 +327,8 @@ hr {
     content: '';
     position: absolute;
     bottom: -2px;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 50px;
     height: 2px;
     background-color: var(--orange);
@@ -471,8 +472,9 @@ hr {
 
 .product-detail-img {
     width: 100%;
-    border-radius: 6px;
-    border: 1px solid var(--border-dark);
+    border-radius: 12px;
+    border: 2px solid var(--border-dark);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 #product-name {

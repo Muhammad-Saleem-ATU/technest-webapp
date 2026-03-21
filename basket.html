@@ -9,13 +9,21 @@
 </head>
 <body>
 
-    <!-- ==================== NAVBAR ====================  -->
+    <!-- ==================== NAVBAR ==================== -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="index.html">Tech<span>Nest</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <!-- Basket icon always visible on mobile next to hamburger -->
+            <a class="nav-link basket-nav-link d-lg-none me-2" href="basket.html">
+                <span class="basket-icon">&#128722;</span>
+                <span class="badge" id="basket-count-mobile">0</span>
+            </a>
+
+
+            <!-- Nav Links -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
@@ -25,6 +33,7 @@
                         <a class="nav-link" href="products.html">Products</a>
                     </li>
                 </ul>
+                <!-- Basket with label shown on desktop inside collapse -->
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link basket-nav-link active" href="basket.html">
@@ -103,9 +112,10 @@
                     <p class="footer-heading">Shop</p>
                     <ul class="footer-links">
                         <li><a href="products.html">All Products</a></li>
-                        <li><a href="products.html">Laptops</a></li>
-                        <li><a href="products.html">Phones</a></li>
-                        <li><a href="products.html">Accessories</a></li>
+                        <li><a href="products.html?category=Laptops">Laptops</a></li>
+                        <li><a href="products.html?category=Phones">Phones</a></li>
+                        <li><a href="products.html?category=Audio">Audio</a></li>
+                        <li><a href="products.html?category=Gaming">Gaming</a></li>
                     </ul>
                 </div>
                 <div class="col-md-2 col-6 mb-4 mb-md-0">
@@ -128,10 +138,6 @@
                 <p class="footer-copyright">
                     &copy; 2025 TechNest. All rights reserved. Built by Muhammad Saleem &mdash; L00196822 &mdash; ATU.
                 </p>
-                <div class="footer-legal-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms &amp; Conditions</a>
-                </div>
             </div>
         </div>
     </footer>
