@@ -120,18 +120,18 @@ Then open `index.html` in a web browser (Chrome or Firefox recommended).
 
 ## Weekly Progress
 
-| Week    | Focus                                                                 | Status    |
-| ------- | --------------------------------------------------------------------- | --------- |
-| Week 1  | Requirements, wireframes, architecture planning, repository setup     | Completed |
-| Week 2  | Structural diagrams and HTML page structure                           | Completed |
-| Week 3  | CSS styling, responsive layout, DevOps CI pipeline setup              | Completed |
-| Week 4  | JavaScript data modelling (Product.js)                                | Completed |
-| Week 5  | Dynamic rendering, filtering, search, Swiper integration, CI upgrade  | Completed |
-| Week 6  | Product detail page functionality                                     | Upcoming  |
-| Week 7  | Basket CRUD and localStorage integration                              | Upcoming  |
-| Week 8  | Checkout and validation                                               | Upcoming  |
-| Week 9  | Testing and optimisation                                              | Upcoming  |
-| Week 10 | Final documentation and submission                                    | Upcoming  |
+| Week    | Focus                                                                | Status    |
+|---------|----------------------------------------------------------------------|-----------|
+| Week 1  | Requirements, wireframes, architecture planning, repository setup    | Completed |
+| Week 2  | Structural diagrams and HTML page structure                          | Completed |
+| Week 3  | CSS styling, responsive layout, DevOps CI pipeline setup             | Completed |
+| Week 4  | JavaScript data modelling (Product.js)                               | Completed |
+| Week 5  | Dynamic rendering, filtering, search, Swiper integration, CI upgrade | Completed |
+| Week 6  | Product detail page functionality                                    | Upcoming  |
+| Week 7  | Basket CRUD and localStorage integration                             | Upcoming  |
+| Week 8  | Checkout and validation                                              | Upcoming  |
+| Week 9  | Testing and optimisation                                             | Upcoming  |
+| Week 10 | Final documentation and submission                                   | Upcoming  |
 
 ---
 
