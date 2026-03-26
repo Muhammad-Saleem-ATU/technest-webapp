@@ -2,9 +2,11 @@ name: Super Linter
 
 on:
   push:
-    branches: [ "feature/super-linter" ]
+    branches:
+      - feature/super-linter
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   super-lint:
@@ -14,13 +16,26 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # Required for Super-Linter
 
       - name: Run Super-Linter
         uses: github/super-linter@v6
         env:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+          # Core validations (your project)
           VALIDATE_HTML: true
           VALIDATE_CSS: true
           VALIDATE_JAVASCRIPT_ES: true
+
+          # Additional validations (improvement)
+          VALIDATE_JSON: true
+          VALIDATE_MARKDOWN: true
+
+          # Performance optimisation
           VALIDATE_ALL_CODEBASE: false
+
+          # Ignore unnecessary folders
+          FILTER_REGEX_EXCLUDE: "node_modules/.*"
