@@ -84,151 +84,45 @@ specific features.
 | Chrome Developer Tools | Testing, debugging and checking responsiveness |
 
 ### 2.2 Folder Structure
-```
+
+```text
 technest-webapp/
-├── index.html                  -- Home / landing page
-├── products.html               -- Product listing with filter and search
-├── product-detail.html         -- Individual product detail page
-├── basket.html                 -- Basket page
-├── checkout.html               -- Checkout form and confirmation
+├── index.html
+├── products.html
+├── product-detail.html
+├── basket.html
+├── checkout.html
 ├── css/
-│   └── style.css               -- All custom CSS styles
+│   └── style.css
 ├── js/
 │   ├── data/
-│   │   └── products.js         -- Product data as JavaScript objects
+│   │   └── products.js
 │   ├── models/
-│   │   ├── Product.js          -- ES6 class for a single product
-│   │   ├── Basket.js           -- ES6 class handling all basket logic
-│   │   └── Storage.js          -- ES6 class wrapping localStorage
-│   └── pages/                  -- Page-specific JS files (added later)
+│   │   ├── Product.js
+│   │   ├── Basket.js
+│   │   └── Storage.js
+│   └── pages/
 ├── assets/
-│   └── images/                 -- Product images
-└── docs/                       -- Planning documents
+│   └── images/
+└── docs/
 ```
-
-### 2.3 JavaScript Classes
-
-**Product.js**  
-Represents a single product. Each product in the data file gets turned into
-a Product object when the app loads. It will store things like the product
-ID, name, description, price, category and image path.
-
-**Basket.js**  
-Handles everything to do with the shopping basket. This includes adding a
-product, updating the quantity of an existing item, removing an item,
-calculating the total price and returning the current list of items. It
-works together with the Storage class to save and load from localStorage.
-
-**Storage.js**  
-A wrapper around the browser's localStorage API. Rather than writing
-localStorage calls all over the codebase, this class handles it all in one
-place. It will have methods for saving the basket, loading the basket and
-clearing it.
 
 ### 2.4 Page Flow
-```
+
+```text
 Home Page
-    └── Products Page
-            └── Product Detail Page
-                    └── Basket Page
-                            └── Checkout Page
-                                    └── Confirmation Message
+  → Products Page
+      → Product Detail Page
+          → Basket Page
+              → Checkout Page
+                  → Confirmation Message
 ```
 
-The navigation bar is visible on every page so the user can jump to the
-basket or back to products at any time.
-
 ---
 
-## 3. Wireframe Descriptions
+## 4. Week 1 Summary
 
-These are text descriptions of what each page should look like. I used
-these as a guide when drawing the actual wireframes on paper.
+- Wrote all requirements
+- Planned structure
+- Created repo
 
-### Home Page (index.html)
-
-**Layout:** Full-width header, large hero/banner section, row of category
-buttons, footer.
-
-**Elements:**
-- Navigation bar with TechNest logo on the left, links to Products and
-  Basket on the right, basket item count badge
-- Hero section with a welcome heading, short description of the shop and
-  a "Shop Now" button linking to products.html
-- A row of category buttons (e.g. Laptops, Phones, Accessories, All)
-- Simple footer with project name and student number
-
----
-
-### Products Page (products.html)
-
-**Layout:** Navigation bar, filter/search bar below it, grid of product
-cards, footer.
-
-**Elements:**
-- Search input on the left, sort dropdown on the right
-- Row of category filter buttons below the search bar
-- Grid of product cards — each card has a product image, name, category
-  label, price and a "View Details" button
-- Grid is 3 columns on desktop, 2 on tablet, 1 on mobile
-
----
-
-### Product Detail Page (product-detail.html)
-
-**Layout:** Navigation bar, two-column layout in the main area (image left,
-info right), footer.
-
-**Elements:**
-- A "Back to Products" link above the two columns
-- Left column: large product image
-- Right column: product name as heading, category badge, description
-  paragraph, price in large bold text, quantity input, "Add to Basket"
-  button
-
----
-
-### Basket Page (basket.html)
-
-**Layout:** Navigation bar, two-column layout (basket items on left, order
-summary on right), footer.
-
-**Elements:**
-- Left side: list of basket items — each row shows a small product image,
-  product name, unit price, quantity input, remove button and line total
-- Right side: order summary box with subtotal and "Proceed to Checkout"
-  button
-- If basket is empty: a message saying "Your basket is empty" and a link
-  back to the products page
-
----
-
-### Checkout Page (checkout.html)
-
-**Layout:** Navigation bar, two-column layout (form on left, order summary
-on right), footer.
-
-**Elements:**
-- Left side form split into three sections:
-  - Personal Details: First Name, Last Name, Email
-  - Delivery Address: Address Line 1, Address Line 2 (optional), City,
-    Postcode
-  - Payment Details: Card Number, Expiry Date, CVV
-- "Place Order" button at the bottom of the form
-- Right side: small summary of basket items and final total
-- After successful submission: main content replaced with a confirmation
-  message, basket cleared
-
----
-
-## 4. Week 1  Summary
-
-- Wrote all functional and non-functional requirements
-- Planned the folder and file structure for the whole project
-- Described what each of the three JavaScript classes will do
-- Described the layout and elements for all five pages
-- Created the GitHub repository and set up the initial folder structure
-- Made the first commit
-
-**Next week:** Build the HTML structure for all five pages including the
-shared navigation bar and footer.
