@@ -221,7 +221,7 @@ on right), footer.
 
 ---
 
-## 4. Week 1 Summary
+## 4. Week 1  Summary
 
 - Wrote all functional and non-functional requirements
 - Planned the folder and file structure for the whole project
