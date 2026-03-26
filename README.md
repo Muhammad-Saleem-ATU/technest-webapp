@@ -73,7 +73,7 @@ This ensures improved code quality and consistency before integration into the m
 
 The current project structure (as of Week 5) is shown below:
 
-```
+```text
 technest-webapp/
 ├── index.html
 ├── products.html
