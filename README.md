@@ -86,12 +86,13 @@ This ensures that only validated, tested and secure code is promoted through the
 
 The deployment pipeline follows an **artefact-based GitOps approach**:
 
+
 - Build artefact is created in CI
 - Artefact is uploaded and stored
 - Same artefact is used in deployment
 - Deployment is automated using GitHub Actions
 
-The Application is deployed to **GitHub Pages** as the production environment.
+The application is deployed to **GitHub Pages** as the production environment.
 
 ---
 
@@ -138,6 +139,7 @@ This pipeline aligns with the **CAMS model**:
 
 ## Project Structure (Week 6)
 
+
 ```text
 technest-webapp/
 ├── index.html
@@ -177,6 +179,7 @@ Open index.html in a browser (Chrome or Firefox recommended).
 
 ## Weekly Progress
 
+
 | Week    | Focus                                    | Status    |
 | ------- | ---------------------------------------- | --------- |
 | Week 1  | Requirements, wireframes, architecture   | Completed |
@@ -189,6 +192,7 @@ Open index.html in a browser (Chrome or Firefox recommended).
 | Week 8  | Checkout                                 | Upcoming  |
 | Week 9  | Testing & optimisation                   | Upcoming  |
 | Week 10 | Final submission                         | Upcoming  |
+
 
 
 ## Author
