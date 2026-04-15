@@ -26,12 +26,9 @@ jobs:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-          # Core validations (your project)
+          # Enable only required linters (include mode)
           VALIDATE_HTML: true
-          VALIDATE_CSS: false
           VALIDATE_JAVASCRIPT_ES: true
-
-          # Additional validations (improvement)
           VALIDATE_JSON: true
           VALIDATE_MARKDOWN: true
 
