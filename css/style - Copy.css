@@ -106,18 +106,6 @@ hr {
     z-index: 1000;
 }
 
-/* Mobile dropdown gets a solid dark background so it
-   does not overlap and blur the page content below */
-@media (max-width: 991px) {
-    .navbar-collapse {
-        background-color: var(--dark-2);
-        border-top: 1px solid var(--border-dark);
-        padding: 10px 16px 16px;
-        margin-top: 8px;
-        border-radius: 0 0 8px 8px;
-    }
-}
-
 .navbar .container {
     height: 60px;
     display: flex;
