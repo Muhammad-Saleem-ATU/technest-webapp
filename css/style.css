@@ -106,6 +106,18 @@ hr {
     z-index: 1000;
 }
 
+/* Mobile dropdown gets a solid dark background so it
+   does not overlap and blur the page content below */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background-color: var(--dark-2);
+        border-top: 1px solid var(--border-dark);
+        padding: 10px 16px 16px;
+        margin-top: 8px;
+        border-radius: 0 0 8px 8px;
+    }
+}
+
 .navbar .container {
     height: 60px;
     display: flex;
@@ -202,12 +214,18 @@ hr {
 }
 
 .navbar-toggler {
-    border-color: var(--border-dark);
+    border-color: var(--orange);
     padding: 4px 8px;
+    background-color: transparent;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+    outline: none;
 }
 
 .navbar-toggler-icon {
-    filter: invert(1);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28232%2C119%2C34%2C1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 /* ---- Buttons ---- */
@@ -924,4 +942,57 @@ hr {
     .footer-social {
         flex-wrap: wrap;
     }
+}
+
+/* ============================================================
+   Swiper Product Carousels
+   Week 5 - added alongside category section layout
+   ============================================================ */
+
+.category-section-block {
+    padding: 40px 0 20px;
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.category-section-block:last-child {
+    border-bottom: none;
+}
+
+.category-section-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--orange);
+    display: inline-block;
+}
+
+/* Give the Swiper container some breathing room for the arrows */
+.swiper {
+    padding: 10px 40px 40px !important;
+}
+
+/* Navigation arrows */
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--orange) !important;
+    top: 40% !important;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    color: var(--orange-dark) !important;
+}
+
+/* Pagination dots */
+.swiper-pagination-bullet {
+    background: var(--border-dark) !important;
+    opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--orange) !important;
 }

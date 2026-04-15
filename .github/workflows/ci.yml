@@ -24,14 +24,12 @@ jobs:
       - name: Lint CSS
         run: |
           npm install -g stylelint stylelint-config-standard
-          echo '{ "extends": "stylelint-config-standard" }' > .stylelintrc.json
           stylelint "**/*.css" || true
 
       # JavaScript linting
       - name: Lint JavaScript
         run: |
-          npm install -g eslint
-          echo '{ "env": { "browser": true, "es2021": true }, "extends": "eslint:recommended" }' > .eslintrc.json
+          npm install -g eslint          
           eslint "**/*.js" || true
 
   build:

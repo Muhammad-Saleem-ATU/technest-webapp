@@ -8,25 +8,34 @@ The application allows users to browse products, filter and search the catalogue
 
 ## About the Project
 
-The aim of this project is to demonstrate structured front-end development using modern JavaScript practices. The application is designed using Object-Oriented Programming (OOP) principles, with a clear separation between data, logic, and presentation.
+The aim of this project is to demonstrate structured front-end development using modern JavaScript practices. The application follows Object-Oriented Programming (OOP) principles with clear separation between data, logic and presentation.
 
-The project also simulates real-world development practices by incorporating version control, modular architecture, and DevOps workflows.
+The project also simulates real-world software development practices by incorporating version control, modular architecture and a DevOps CI/CD pipeline.
 
 ---
 
-## Features
+## Features (Week 6)
+
+The following features are implemented:
 
 - Product listing page with dynamic catalogue
 - Filter products by category
 - Search products by name
 - Sort products by price
-- Individual product detail pages (planned)
-- Shopping basket with CRUD functionality (planned)
-- Basket persistence using localStorage (planned)
-- Checkout form with validation (planned)
-- Responsive design for desktop, tablet, and mobile
-- Dynamic product rendering using JavaScript (Week 5)
-- Swiper.js product carousels (Week 5)
+- Swiper.js product carousels
+- Product detail page (dynamic rendering using URL parameters)
+- Product details populated from data (name, image, description, price)
+- Add to Basket functionality using localStorage
+- Basket badge updates dynamically across pages
+- Responsive design (desktop, tablet, mobile)
+- Favicon added to all pages
+
+### Upcoming Features
+
+- Basket page with CRUD functionality
+- Basket total calculation
+- Checkout form with validation
+- Order confirmation flow
 
 ---
 
@@ -38,40 +47,96 @@ The project also simulates real-world development practices by incorporating ver
 - JavaScript (ES6+)
 - Swiper.js
 - localStorage API
-- Git and GitHub
+- Git & GitHub
 - GitHub Actions (CI/CD)
 - Visual Studio Code
-- Chrome Developer Tools
 
 ---
 
-## DevOps & CI/CD
+## DevOps & CI/CD Pipeline (Week 6 Enhancement)
 
-This project integrates DevOps practices using GitHub to support a structured and automated development workflow.
+This project implements a **GitHub Actions-based CI/CD pipeline** aligned with modern DevOps and GitOps practices.
 
-- GitHub Actions is used to implement a Continuous Integration (CI) pipeline
-- Every push and pull request triggers automated checks
-- A pull request workflow is enforced for all changes to the main branch
-- Branch protection rules ensure:
-  - Pull request approval is required before merging
-  - Code must pass CI checks before integration
-- Development is carried out using feature branches
+### Continuous Integration (CI)
 
-### CI Pipeline Enhancement (Week 5)
+The CI pipeline runs on:
 
-The CI pipeline was enhanced to include:
+- Push to feature branches
+- Pull requests to `main`
 
-- HTML validation
-- CSS linting
-- JavaScript linting
+Pipeline stages:
 
-This ensures improved code quality and consistency before integration into the main branch.
+- **Code Checkout**
+- **Linting & Validation**
+  - HTML validation (HTMLHint)
+  - CSS linting (Stylelint)
+  - JavaScript linting (ESLint)
+  - Super-Linter (multi-language validation)
+- **Automated Testing**
+  - Automated testing implemented using Jest within the CI pipeline
+- **Security (DevSecOps)**
+  - Dependency vulnerability scanning using npm audit integrated into the CI pipeline
+- **Fail-Fast Quality Gates**
+  - Pipeline fails if any validation, testing or security step fails
+
+This ensures that only validated, tested and secure code is promoted through the pipeline to production.
 
 ---
 
-## Project Structure
+### Continuous Deployment (CD)
 
-The current project structure (as of Week 5) is shown below:
+The deployment pipeline follows an **artefact-based GitOps approach**:
+
+- Build artefact is created in CI
+- Artefact is uploaded and stored
+- Same artefact is used in deployment
+- Deployment is automated using GitHub Actions
+
+The application is deployed to **GitHub Pages** as the production environment.
+
+---
+
+### Multi-Environment Deployment
+
+The pipeline includes environment separation:
+
+- **Development** → Feature branches  
+- **Staging** → Intermediate deployment stage  
+- **Production** → Main branch deployment  
+
+#### Deployment flow
+
+```text
+CI → Build → Staging → Production
+```
+
+- Staging ensures pre-production validation
+- Production requires manual approval via GitHub Environments
+
+---
+
+### Collaboration Workflow
+
+- Feature branches used for all development
+- Pull requests required before merging
+- CI pipeline must pass before merge
+- Code review required (simulated using second GitHub account)
+- Branch protection rules enforced
+
+---
+
+### DevOps Principles Applied
+
+This pipeline aligns with the **CAMS model**:
+
+- **Culture** → Collaboration via PRs and reviews  
+- **Automation** → CI/CD pipelines automate validation and deployment  
+- **Measurement** → Pipeline results provide feedback  
+- **Sharing** → Transparent workflows and documentation  
+
+---
+
+## Project Structure (Week 6)
 
 ```text
 technest-webapp/
@@ -81,25 +146,21 @@ technest-webapp/
 ├── basket.html
 ├── checkout.html
 ├── css/
-│   └── style.css
+│ └── style.css
+├── icons/
+│ └── favicon.ico
 ├── js/
-│   ├── data/
-│   │   └── products.js
-│   ├── models/
-│   │   └── Product.js
-│   └── pages/
-│       ├── index.js
-│       └── products.js
+│ ├── data/
+│ │ └── products.js
+│ ├── models/
+│ │ └── Product.js
+│ └── pages/
+│ ├── index.js
+│ ├── products.js
+│ └── product-detail.js
 ├── assets/
-│   └── images/
-├── docs/
-│   ├── project/
-│   │   ├── week1/
-│   │   ├── week2/
-│   │   ├── week3/
-│   │   └── week4/
-│   └── devops/
-└── structural_behavioural_interface_diagrams/
+│ └── images/
+└── docs/
 ```
 
 ---
@@ -108,36 +169,30 @@ technest-webapp/
 
 No installation or backend server is required.
 
-Clone the repository:
-
 ```bash
 git clone https://github.com/Muhammad-Saleem-ATU/technest-webapp
 ```
 
-Then open `index.html` in a web browser (Chrome or Firefox recommended).
-
----
+Open index.html in a browser (Chrome or Firefox recommended).
 
 ## Weekly Progress
 
-| Week    | Focus                                                                | Status    |
-|---------|----------------------------------------------------------------------|-----------|
-| Week 1  | Requirements, wireframes, architecture planning, repository setup    | Completed |
-| Week 2  | Structural diagrams and HTML page structure                          | Completed |
-| Week 3  | CSS styling, responsive layout, DevOps CI pipeline setup             | Completed |
-| Week 4  | JavaScript data modelling (Product.js)                               | Completed |
-| Week 5  | Dynamic rendering, filtering, search, Swiper integration, CI upgrade | Completed |
-| Week 6  | Product detail page functionality                                    | Upcoming  |
-| Week 7  | Basket CRUD and localStorage integration                             | Upcoming  |
-| Week 8  | Checkout and validation                                              | Upcoming  |
-| Week 9  | Testing and optimisation                                             | Upcoming  |
-| Week 10 | Final documentation and submission                                   | Upcoming  |
-
----
+| Week    | Focus                                    | Status    |
+| ------- | ---------------------------------------- | --------- |
+| Week 1  | Requirements, wireframes, architecture   | Completed |
+| Week 2  | HTML structure                           | Completed |
+| Week 3  | CSS + CI pipeline setup                  | Completed |
+| Week 4  | Product.js model                         | Completed |
+| Week 5  | Dynamic rendering + filtering            | Completed |
+| Week 6  | Product detail + DevOps pipeline upgrade | Completed |
+| Week 7  | Basket system                            | Upcoming  |
+| Week 8  | Checkout                                 | Upcoming  |
+| Week 9  | Testing & optimisation                   | Upcoming  |
+| Week 10 | Final submission                         | Upcoming  |
 
 ## Author
 
-Muhammad Saleem  
-Student No: L00196822  
-Module: PROJ_IT805 - Software Development Project  
+Muhammad Saleem
+Student No: L00196822
+Module: PROJ_IT805 - Software Development Project
 Atlantic Technological University
