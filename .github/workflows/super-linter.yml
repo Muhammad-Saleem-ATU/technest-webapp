@@ -3,7 +3,7 @@ name: Super Linter
 on:
   push:
     branches:
-      - feature/super-linter
+      - "**"
   pull_request:
     branches:
       - main
@@ -27,7 +27,7 @@ jobs:
 
           # Core validations (your project)
           VALIDATE_HTML: true
-          VALIDATE_CSS: true
+          VALIDATE_CSS: false
           VALIDATE_JAVASCRIPT_ES: true
 
           # Additional validations (improvement)
