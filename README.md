@@ -60,6 +60,7 @@ This project implements a **GitHub Actions-based CI/CD pipeline** aligned with m
 ### Continuous Integration (CI)
 
 The CI pipeline runs on:
+
 - Push to feature branches
 - Pull requests to `main`
 
@@ -71,7 +72,7 @@ Pipeline stages:
   - CSS linting (Stylelint)
   - JavaScript linting (ESLint)
   - Super-Linter (multi-language validation)
-- **Automated Testing** 
+- **Automated Testing**
   - Automated testing implemented using Jest within the CI pipeline
 - **Security (DevSecOps)**
   - Dependency vulnerability scanning using npm audit integrated into the CI pipeline
@@ -85,7 +86,6 @@ This ensures that only validated, tested and secure code is promoted through the
 ### Continuous Deployment (CD)
 
 The deployment pipeline follows an **artefact-based GitOps approach**:
-
 
 - Build artefact is created in CI
 - Artefact is uploaded and stored
@@ -104,12 +104,11 @@ The pipeline includes environment separation:
 - **Staging** → Intermediate deployment stage  
 - **Production** → Main branch deployment  
 
-#### Deployment flow:
+#### Deployment flow
 
 ```text
 CI → Build → Staging → Production
 ```
-
 
 - Staging ensures pre-production validation
 - Production requires manual approval via GitHub Environments
@@ -138,7 +137,6 @@ This pipeline aligns with the **CAMS model**:
 ---
 
 ## Project Structure (Week 6)
-
 
 ```text
 technest-webapp/
@@ -179,7 +177,6 @@ Open index.html in a browser (Chrome or Firefox recommended).
 
 ## Weekly Progress
 
-
 | Week    | Focus                                    | Status    |
 | ------- | ---------------------------------------- | --------- |
 | Week 1  | Requirements, wireframes, architecture   | Completed |
@@ -192,8 +189,6 @@ Open index.html in a browser (Chrome or Firefox recommended).
 | Week 8  | Checkout                                 | Upcoming  |
 | Week 9  | Testing & optimisation                   | Upcoming  |
 | Week 10 | Final submission                         | Upcoming  |
-
-
 
 ## Author
 
