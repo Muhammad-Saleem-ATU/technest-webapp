@@ -57,7 +57,7 @@ The following features are still to be built:
 This is the current state of the project at the end of week 6. The product detail
 page script has been added. Basket.js and StorageManager.js will be added in week 7.
 
-```
+```text
 technest-webapp/
 ├── index.html                 (updated week 6 - favicon added)
 ├── products.html              (updated week 6 - favicon added)

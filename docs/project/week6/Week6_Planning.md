@@ -112,7 +112,7 @@ project root. The favicon shows in the browser tab on all five pages.
 
 ## 4. File Structure After Week 6
 
-```
+```text
 technest-webapp/
 ├── index.html                     -- updated: favicon added
 ├── products.html                  -- updated: favicon added
