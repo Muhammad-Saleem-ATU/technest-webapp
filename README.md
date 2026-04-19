@@ -10,50 +10,77 @@ The application allows users to browse products, filter and search the catalogue
 
 The aim of this project is to demonstrate structured front-end development using modern JavaScript practices. The application follows Object-Oriented Programming (OOP) principles with clear separation between data, logic and presentation.
 
-The project also simulates real-world software development practices by incorporating version control, modular architecture and a DevOps CI/CD pipeline.
+The project also simulates real-world software development practices by incorporating version control, modular architecture, and a DevOps CI/CD pipeline.
 
 ---
 
-## Features (Week 6)
+## Features (Week 8)
 
 The following features are implemented:
 
-- Product listing page with dynamic catalogue
-- Filter products by category
-- Search products by name
-- Sort products by price
-- Swiper.js product carousels
-- Product detail page (dynamic rendering using URL parameters)
-- Product details populated from data (name, image, description, price)
-- Add to Basket functionality using localStorage
-- Basket badge updates dynamically across pages
-- Responsive design (desktop, tablet, mobile)
-- Favicon added to all pages
+### Product & Catalogue
 
-### Upcoming Features
+* Product listing page with dynamic catalogue
+* Filter products by category
+* Search products by name
+* Sort products by price
+* Swiper.js product carousels
+* Featured products on home page
 
-- Basket page with CRUD functionality
-- Basket total calculation
-- Checkout form with validation
-- Order confirmation flow
+### Product Detail
+
+* Dynamic product detail page using URL parameters
+* Product data populated dynamically (name, image, description, price)
+
+### Basket System (Week 7)
+
+* Add to basket with selected quantity
+* Basket stored using localStorage
+* Basket page with full CRUD functionality:
+
+  * Increase/decrease quantity
+  * Remove items
+* Basket total calculation
+* Navbar basket badge updates dynamically
+
+### Checkout System (Week 8)
+
+* Order summary generated dynamically from basket
+* Full client-side form validation:
+
+  * Name, email, address, payment fields
+* Inline error messages for invalid inputs
+* Auto-formatting:
+
+  * Card number (#### #### #### ####)
+  * Expiry date (MM/YY)
+* Prevent checkout with empty basket (redirect)
+* Order confirmation message displayed
+* Basket cleared after successful order
+
+### UI & UX
+
+* Responsive design (desktop, tablet, mobile)
+* Bootstrap-based layout
+* Improved user experience with validation feedback
 
 ---
 
 ## Technologies Used
 
-- HTML5
-- CSS3
-- Bootstrap 5
-- JavaScript (ES6+)
-- Swiper.js
-- localStorage API
-- Git & GitHub
-- GitHub Actions (CI/CD)
-- Visual Studio Code
+* HTML5
+* CSS3
+* Bootstrap 5
+* JavaScript (ES6+)
+* Swiper.js
+* localStorage API
+* Git & GitHub
+* GitHub Actions (CI/CD)
+* Visual Studio Code
 
 ---
 
-## DevOps & CI/CD Pipeline (Week 6 Enhancement)
+## DevOps & CI/CD Pipeline
 
 This project implements a **GitHub Actions-based CI/CD pipeline** aligned with modern DevOps and GitOps practices.
 
@@ -61,82 +88,76 @@ This project implements a **GitHub Actions-based CI/CD pipeline** aligned with m
 
 The CI pipeline runs on:
 
-- Push to feature branches
-- Pull requests to `main`
+* Push to feature branches
+* Pull requests to `main`
 
 Pipeline stages:
 
-- **Code Checkout**
-- **Linting & Validation**
-  - HTML validation (HTMLHint)
-  - CSS linting (Stylelint)
-  - JavaScript linting (ESLint)
-  - Super-Linter (multi-language validation)
-- **Automated Testing**
-  - Automated testing implemented using Jest within the CI pipeline
-- **Security (DevSecOps)**
-  - Dependency vulnerability scanning using npm audit integrated into the CI pipeline
-- **Fail-Fast Quality Gates**
-  - Pipeline fails if any validation, testing or security step fails
+* **Code Checkout**
+* **Linting & Validation**
 
-This ensures that only validated, tested and secure code is promoted through the pipeline to production.
+  * HTML (HTMLHint)
+  * CSS (Stylelint)
+  * JavaScript (ESLint)
+  * Super-Linter (multi-language validation)
+* **Automated Testing**
+
+  * Jest testing integrated into pipeline
+* **Security (DevSecOps)**
+
+  * npm audit for vulnerability scanning
+* **Fail-Fast Quality Gates**
+
+  * Pipeline stops immediately on error
+
+This ensures only validated, tested, and secure code progresses.
 
 ---
 
 ### Continuous Deployment (CD)
 
-The deployment pipeline follows an **artefact-based GitOps approach**:
-
-- Build artefact is created in CI
-- Artefact is uploaded and stored
-- Same artefact is used in deployment
-- Deployment is automated using GitHub Actions
-
-The application is deployed to **GitHub Pages** as the production environment.
+* Triggered on merge to `main`
+* Artefact-based deployment approach
+* Deployment automated using GitHub Actions
+* Application deployed to **GitHub Pages**
 
 ---
 
-### Multi-Environment Deployment
+### Multi-Environment Strategy
 
-The pipeline includes environment separation:
-
-- **Development** → Feature branches  
-- **Staging** → Intermediate deployment stage  
-- **Production** → Main branch deployment  
-
-#### Deployment flow
+* **Development** → Feature branches
+* **Staging** → Pre-production validation
+* **Production** → Main branch
 
 ```text
 CI → Build → Staging → Production
 ```
 
-- Staging ensures pre-production validation
-- Production requires manual approval via GitHub Environments
-
 ---
 
 ### Collaboration Workflow
 
-- Feature branches used for all development
-- Pull requests required before merging
-- CI pipeline must pass before merge
-- Code review required (simulated using second GitHub account)
-- Branch protection rules enforced
+* Feature branches for all development
+* Pull requests required before merge
+* CI must pass before merging
+* Code reviews enforced
+* Branch protection rules applied
 
 ---
 
 ### DevOps Principles Applied
 
-This pipeline aligns with the **CAMS model**:
+This pipeline aligns with key DevOps principles:
 
-- **Culture** → Collaboration via PRs and reviews  
-- **Automation** → CI/CD pipelines automate validation and deployment  
-- **Measurement** → Pipeline results provide feedback  
-- **Sharing** → Transparent workflows and documentation  
+* **Automation** → CI/CD pipelines automate validation and deployment
+* **Fail-Fast** → Errors detected early
+* **DevSecOps** → Security integrated into pipeline
+* **Quality Gates** → Validation stages enforce code quality
+* **GitOps** → Repository acts as the single source of truth
 
 ---
 
-## Project Structure (Week 6)
+## Project Structure (Week 8)
 
 ```text
 technest-webapp/
@@ -146,20 +167,22 @@ technest-webapp/
 ├── basket.html
 ├── checkout.html
 ├── css/
-│ └── style.css
-├── icons/
-│ └── favicon.ico
+│   └── style.css
 ├── js/
-│ ├── data/
-│ │ └── products.js
-│ ├── models/
-│ │ └── Product.js
-│ └── pages/
-│ ├── index.js
-│ ├── products.js
-│ └── product-detail.js
+│   ├── data/
+│   │   └── products.js
+│   ├── models/
+│   │   ├── Product.js
+│   │   ├── Basket.js
+│   │   └── StorageManager.js
+│   └── pages/
+│       ├── index.js
+│       ├── products.js
+│       ├── product-detail.js
+│       ├── basket.js
+│       └── checkout.js
 ├── assets/
-│ └── images/
+│   └── images/
 └── docs/
 ```
 
@@ -173,22 +196,32 @@ No installation or backend server is required.
 git clone https://github.com/Muhammad-Saleem-ATU/technest-webapp
 ```
 
-Open index.html in a browser (Chrome or Firefox recommended).
+Run the project using a local development server.
+
+Recommended (VS Code):
+
+Install Live Server
+Right-click index.html
+Click Open with Live Server
+
+---
 
 ## Weekly Progress
 
-| Week    | Focus                                    | Status    |
-| ------- | ---------------------------------------- | --------- |
-| Week 1  | Requirements, wireframes, architecture   | Completed |
-| Week 2  | HTML structure                           | Completed |
-| Week 3  | CSS + CI pipeline setup                  | Completed |
-| Week 4  | Product.js model                         | Completed |
-| Week 5  | Dynamic rendering + filtering            | Completed |
-| Week 6  | Product detail + DevOps pipeline upgrade | Completed |
-| Week 7  | Basket system                            | Upcoming  |
-| Week 8  | Checkout                                 | Upcoming  |
-| Week 9  | Testing & optimisation                   | Upcoming  |
-| Week 10 | Final submission                         | Upcoming  |
+| Week    | Focus                                  | Status    |
+| ------- | -------------------------------------- | --------- |
+| Week 1  | Requirements, wireframes, architecture | Completed |
+| Week 2  | HTML structure                         | Completed |
+| Week 3  | CSS + CI setup                         | Completed |
+| Week 4  | Product model                          | Completed |
+| Week 5  | Dynamic rendering & filtering          | Completed |
+| Week 6  | Product detail + DevOps pipeline       | Completed |
+| Week 7  | Basket system                          | Completed |
+| Week 8  | Checkout & validation                  | Completed |
+| Week 9  | Testing & optimisation                 | Upcoming  |
+| Week 10 | Final submission                       | Upcoming  |
+
+---
 
 ## Author
 

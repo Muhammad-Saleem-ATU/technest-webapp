@@ -8,6 +8,7 @@
 //  Author : Muhammad Saleem
 //  Student: L00196822
 //  Week 6 - Product Detail Page
+//  Updated Week 7 - now uses Basket class for Add to Basket
 // ============================================================
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -83,9 +84,8 @@ function showNotFound() {
 
 
 // ── Add to basket ─────────────────────────────────────────────
-// Reads the quantity input and saves the item to localStorage.
-// StorageManager is not used yet so this reads and writes
-// localStorage directly. Full basket integration in week 7.
+// Reads the quantity input and uses the Basket class to add
+// the item to localStorage properly.
 
 function setupAddToBasket(product) {
     const btn = document.getElementById('add-to-basket-btn');
@@ -96,32 +96,9 @@ function setupAddToBasket(product) {
         const qtyInput = document.getElementById('quantity');
         const qty      = parseInt(qtyInput.value) || 1;
 
-        // Load existing basket from localStorage
-        const basket = JSON.parse(localStorage.getItem('technest-basket') || '[]');
+        const basket = new Basket();
+        basket.addItem(product, qty);
 
-        // Check if this product is already in the basket
-        const existing = basket.find(function (item) {
-            return item.id === product.id;
-        });
-
-        if (existing) {
-            // Just increase the quantity
-            existing.qty += qty;
-        } else {
-            // Add as a new item
-            basket.push({
-                id    : product.id,
-                name  : product.name,
-                price : product.price,
-                image : product.image,
-                qty   : qty
-            });
-        }
-
-        // Save back to localStorage
-        localStorage.setItem('technest-basket', JSON.stringify(basket));
-
-        // Update the badge and give feedback
         updateBasketBadge();
         showAddedFeedback(btn);
     });
@@ -148,7 +125,8 @@ function showAddedFeedback(btn) {
 // created until week 7.
 
 function updateBasketBadge() {
-    const saved = JSON.parse(localStorage.getItem('technest-basket') || '[]');
+    const storage = new StorageManager('technest-basket');
+    const saved   = storage.load();
 
     let count = 0;
     saved.forEach(function (item) {

@@ -996,3 +996,182 @@ hr {
 .swiper-pagination-bullet-active {
     background: var(--orange) !important;
 }
+
+
+/* ============================================================
+   Basket Page - Week 7
+   ============================================================ */
+
+.basket-item {
+    border-bottom: 1px solid var(--border-dark);
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.basket-item-img img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--border-dark);
+}
+
+.basket-item-info {
+    flex: 1;
+    min-width: 150px;
+}
+
+.basket-item-name {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+}
+
+.basket-item-price {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.basket-item-qty {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.qty-btn {
+    background-color: var(--dark-2);
+    border: 1px solid var(--border-dark);
+    color: var(--text-primary);
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.qty-btn:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+}
+
+.qty-value {
+    min-width: 24px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.basket-item-subtotal {
+    font-weight: bold;
+    color: var(--orange);
+    min-width: 80px;
+    text-align: right;
+}
+
+.remove-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 0 6px;
+    line-height: 1;
+}
+
+.remove-btn:hover {
+    color: #e74c3c;
+}
+
+
+/* ============================================================
+   Basket Item - Quantity Controls and Subtotal
+   Week 7 - added alongside basket page script
+   ============================================================ */
+
+.basket-item-info {
+    flex: 1;
+}
+
+.qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.qty-btn {
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: 1px solid var(--border-dark);
+    color: var(--text-primary);
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qty-btn:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+}
+
+.qty-value {
+    font-weight: bold;
+    min-width: 24px;
+    text-align: center;
+}
+
+.item-subtotal {
+    font-weight: bold;
+    color: var(--orange);
+    min-width: 80px;
+    text-align: right;
+}
+
+
+/* ============================================================
+   Checkout Page
+   Week 8 - added alongside checkout.js
+   ============================================================ */
+
+/* Order summary item rows */
+.checkout-summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-dark);
+    font-size: 0.9rem;
+}
+
+.checkout-summary-item:last-child {
+    border-bottom: none;
+}
+
+.checkout-item-name {
+    color: var(--text-primary);
+}
+
+.checkout-item-price {
+    color: var(--orange);
+    font-weight: bold;
+}
+
+/* Inline field validation errors */
+.field-error {
+    color: #ff4444;
+    font-size: 0.8rem;
+    margin-top: 4px;
+}
+
+.form-control.is-invalid {
+    border-color: #ff4444 !important;
+    box-shadow: none !important;
+}
