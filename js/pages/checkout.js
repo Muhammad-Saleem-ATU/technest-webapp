@@ -1,13 +1,5 @@
 // ============================================================
 //  js/pages/checkout.js
-//  Page script for checkout.html
-//  Reads the basket from localStorage using the Basket class,
-//  populates the order summary, validates the checkout form
-//  and shows a confirmation message after a successful order.
-//
-//  Author : Muhammad Saleem
-//  Student: L00196822
-//  Week 8 - Checkout Form and Validation
 // ============================================================
 
 const basket = new Basket();
@@ -15,11 +7,10 @@ const basket = new Basket();
 
 // ── On page load ─────────────────────────────────────────────
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
 
     updateBasketBadge();
 
-    // If basket is empty send the user back to the basket page
     if (basket.isEmpty()) {
         window.location.href = 'basket.html';
         return;
@@ -28,13 +19,11 @@ document.addEventListener('DOMContentLoaded', function () {
     renderOrderSummary();
     setupForm();
     setupCardFormatting();
-
+    setupBlurValidation();
 });
 
 
 // ── Order summary ─────────────────────────────────────────────
-// Reads the basket items and builds the order summary list on
-// the right hand side of the checkout page.
 
 function renderOrderSummary() {
 
@@ -44,11 +33,11 @@ function renderOrderSummary() {
     if (!container) return;
 
     let html = '';
-    basket.items.forEach(function (item) {
+    basket.items.forEach(item => {
         html += `
             <div class="checkout-summary-item">
                 <span class="checkout-item-name">${item.name} &times; ${item.qty}</span>
-                <span class="checkout-item-price">\u20AC${(item.price * item.qty).toFixed(2)}</span>
+                <span class="checkout-item-price">€${(item.price * item.qty).toFixed(2)}</span>
             </div>
         `;
     });
@@ -56,184 +45,225 @@ function renderOrderSummary() {
     container.innerHTML = html;
 
     if (totalEl) {
-        totalEl.textContent = '\u20AC' + basket.getTotal().toFixed(2);
+        totalEl.textContent = '€' + basket.getTotal().toFixed(2);
     }
 }
 
 
 // ── Form setup ────────────────────────────────────────────────
-// Attaches the submit listener to the checkout form.
 
 function setupForm() {
 
     const form = document.getElementById('checkout-form');
     if (!form) return;
 
-    form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', e => {
         e.preventDefault();
 
-        // Run validation — stop if anything fails
-        if (!validateForm()) return;
+        // Run name validation first so custom messages are set
+        validateNameField(document.getElementById('first-name'));
+        validateNameField(document.getElementById('last-name'));
 
-        // All good — place the order
+        // Bootstrap validation
+        if (!form.checkValidity()) {
+            form.classList.add('was-validated');
+            return;
+        }
+
+        // Payment rules
+        if (!validatePaymentDetails()) return;
+
         placeOrder();
     });
 }
 
 
-// ── Validation ────────────────────────────────────────────────
-// Checks each required field and shows an error message under
-// any field that fails. Returns true only if everything passes.
+// ── Name field validation ─────────────────────────────────────
 
-function validateForm() {
+/**
+ * Checks a name field for two things:
+ *  1. Starts with a digit  → invalid (custom message)
+ *  2. Fails the HTML pattern → invalid (let browser message show)
+ * Uses setCustomValidity so Bootstrap's was-validated styling works correctly.
+ */
+function validateNameField(field) {
+    if (!field) return;
+
+    const val = field.value.trim();
+
+    if (/^\d/.test(val)) {
+        // Starts with a number — set a custom message
+        field.setCustomValidity('Name must not start with a number.');
+    } else {
+        // Clear any previous custom message so the pattern check can run cleanly
+        field.setCustomValidity('');
+    }
+}
+
+
+// ── Blur validation ───────────────────────────────────────────
+
+function setupBlurValidation() {
+
+    const form = document.getElementById('checkout-form');
+    if (!form) return;
+
+    const nameFields = ['first-name', 'last-name'];
+    const fields = form.querySelectorAll('input');
+
+    fields.forEach(field => {
+
+        field.addEventListener('blur', () => {
+
+            // Run custom name logic before checkValidity
+            if (nameFields.includes(field.id)) {
+                validateNameField(field);
+            }
+
+            // Expiry: pattern may pass but date could be in the past
+            if (field.id === 'expiry' && field.checkValidity() && !isValidExpiry(field.value.trim())) {
+                field.classList.add('is-invalid');
+                field.classList.remove('is-valid');
+                return;
+            }
+
+            if (!field.checkValidity()) {
+                field.classList.add('is-invalid');
+                field.classList.remove('is-valid');
+            } else {
+                field.classList.add('is-valid');
+                field.classList.remove('is-invalid');
+            }
+        });
+
+        // Clear the custom validity message as soon as the user starts typing again
+        // so the field doesn't stay stuck in invalid state mid-edit
+        field.addEventListener('input', () => {
+            if (nameFields.includes(field.id)) {
+                field.setCustomValidity('');
+            }
+        });
+
+    });
+}
+
+
+// ── Payment validation ────────────────────────────────────────
+
+function validatePaymentDetails() {
 
     let valid = true;
 
-    // Clear any previous error messages first
-    clearErrors();
-
-    // Personal details
-    if (!getVal('first-name'))   showError('first-name',   'Please enter your first name.');
-    if (!getVal('last-name'))    showError('last-name',    'Please enter your last name.');
-
-    const email = getVal('email');
-    if (!email) {
-        showError('email', 'Please enter your email address.');
-    } else if (!isValidEmail(email)) {
-        showError('email', 'Please enter a valid email address.');
-    }
-
-    // Delivery address
-    if (!getVal('address-1'))  showError('address-1',  'Please enter your address.');
-    if (!getVal('city'))       showError('city',       'Please enter your city.');
-    if (!getVal('postcode'))   showError('postcode',   'Please enter your postcode.');
-
-    // Payment
+    // Card number
+    const cardField = document.getElementById('card-number');
     const cardNum = getVal('card-number').replace(/\s/g, '');
-    if (!cardNum) {
-        showError('card-number', 'Please enter your card number.');
-    } else if (cardNum.length !== 16 || isNaN(cardNum)) {
-        showError('card-number', 'Card number must be 16 digits.');
+
+    cardField.classList.remove('is-invalid');
+
+    if (cardNum.length !== 16 || isNaN(cardNum)) {
+        cardField.classList.add('is-invalid');
+        valid = false;
     }
 
+    // Expiry
+    const expiryField = document.getElementById('expiry');
     const expiry = getVal('expiry');
-    if (!expiry) {
-        showError('expiry', 'Please enter the expiry date.');
-    } else if (!isValidExpiry(expiry)) {
-        showError('expiry', 'Please use MM/YY format.');
+
+    expiryField.classList.remove('is-invalid');
+
+    if (!isValidExpiry(expiry)) {
+        expiryField.classList.add('is-invalid');
+        expiryField.classList.remove('is-valid');
+        valid = false;
     }
 
+    // CVV
+    const cvvField = document.getElementById('cvv');
     const cvv = getVal('cvv');
-    if (!cvv) {
-        showError('cvv', 'Please enter your CVV.');
-    } else if (cvv.length < 3 || isNaN(cvv)) {
-        showError('cvv', 'CVV must be 3 digits.');
-    }
 
-    // Check if any errors were added
-    valid = document.querySelectorAll('.field-error').length === 0;
+    cvvField.classList.remove('is-invalid');
+
+    if (cvv.length !== 3 || !/^\d{3}$/.test(cvv)) {
+        cvvField.classList.add('is-invalid');
+        valid = false;
+    }
 
     return valid;
 }
 
 
 // ── Place order ───────────────────────────────────────────────
-// Clears the basket, hides the form and shows the confirmation.
 
 function placeOrder() {
 
-    // Clear the basket from localStorage
     basket.clear();
     updateBasketBadge();
 
-    // Hide the checkout form and show the confirmation message
     const checkoutContent = document.getElementById('checkout-content');
     const confirmation    = document.getElementById('confirmation-message');
 
     if (checkoutContent) checkoutContent.classList.add('d-none');
     if (confirmation)    confirmation.classList.remove('d-none');
 
-    // Scroll to the top so the confirmation is visible
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 
-// ── Card number formatting ────────────────────────────────────
-// Automatically adds a space every 4 digits as the user types
-// so the card number looks like: 1234 5678 9012 3456
+// ── Card formatting ───────────────────────────────────────────
 
 function setupCardFormatting() {
 
     const cardInput = document.getElementById('card-number');
-    if (!cardInput) return;
+    if (cardInput) {
+        cardInput.addEventListener('input', () => {
+            let val = cardInput.value.replace(/\D/g, '');
+            val = val.match(/.{1,4}/g);
+            cardInput.value = val ? val.join(' ') : '';
+        });
+    }
 
-    cardInput.addEventListener('input', function () {
-        let val = cardInput.value.replace(/\D/g, '');   // digits only
-        val = val.match(/.{1,4}/g);                     // split into groups of 4
-        cardInput.value = val ? val.join(' ') : '';
-    });
-
-    // Auto-format expiry as MM/YY
     const expiryInput = document.getElementById('expiry');
-    if (!expiryInput) return;
-
-    expiryInput.addEventListener('input', function () {
-        let val = expiryInput.value.replace(/\D/g, '');
-        if (val.length >= 3) {
-            val = val.substring(0, 2) + '/' + val.substring(2, 4);
-        }
-        expiryInput.value = val;
-    });
+    if (expiryInput) {
+        expiryInput.addEventListener('input', () => {
+            let val = expiryInput.value.replace(/\D/g, '');
+            if (val.length >= 3) {
+                val = val.substring(0, 2) + '/' + val.substring(2, 4);
+            }
+            expiryInput.value = val;
+        });
+    }
 }
 
 
 // ── Helpers ───────────────────────────────────────────────────
 
-// Gets trimmed value from a form field by id
 function getVal(id) {
     const el = document.getElementById(id);
     return el ? el.value.trim() : '';
 }
 
-// Basic email format check
-function isValidEmail(email) {
-    return email.indexOf('@') > 0 && email.indexOf('.') > 0;
-}
-
-// Checks expiry is MM/YY format with a real month
 function isValidExpiry(expiry) {
-    if (!/^\d{2}\/\d{2}$/.test(expiry)) return false;
+    if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiry)) return false;
+
+    const now       = new Date();
+    const currYear  = now.getFullYear() % 100; // e.g. 2026 → 26
+    const currMonth = now.getMonth() + 1;      // 1–12
+
     const month = parseInt(expiry.substring(0, 2));
-    return month >= 1 && month <= 12;
-}
+    const year  = parseInt(expiry.substring(3, 5));
 
-// Shows a red error message under a field
-function showError(id, message) {
-    const field = document.getElementById(id);
-    if (!field) return;
+    if (year < currYear) return false;
+    if (year === currYear && month < currMonth) return false;
 
-    const error = document.createElement('div');
-    error.className   = 'field-error';
-    error.textContent = message;
-    field.classList.add('is-invalid');
-    field.parentNode.appendChild(error);
-}
-
-// Removes all existing error messages and invalid states
-function clearErrors() {
-    document.querySelectorAll('.field-error').forEach(function (el) {
-        el.remove();
-    });
-    document.querySelectorAll('.is-invalid').forEach(function (el) {
-        el.classList.remove('is-invalid');
-    });
+    return true;
 }
 
 
 // ── Basket badge ─────────────────────────────────────────────
 
 function updateBasketBadge() {
-    const count       = basket.getCount();
+    const count = basket.getCount();
+
     const badge       = document.getElementById('basket-count');
     const badgeMobile = document.getElementById('basket-count-mobile');
 

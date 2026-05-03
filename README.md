@@ -14,57 +14,102 @@ The project also simulates real-world software development practices by incorpor
 
 ---
 
-## Features (Week 8)
+## Week 9 Overview
 
-The following features are implemented:
-
-### Product & Catalogue
-
-* Product listing page with dynamic catalogue
-* Filter products by category
-* Search products by name
-* Sort products by price
-* Swiper.js product carousels
-* Featured products on home page
-
-### Product Detail
-
-* Dynamic product detail page using URL parameters
-* Product data populated dynamically (name, image, description, price)
-
-### Basket System (Week 7)
-
-* Add to basket with selected quantity
-* Basket stored using localStorage
-* Basket page with full CRUD functionality:
-
-  * Increase/decrease quantity
-  * Remove items
-* Basket total calculation
-* Navbar basket badge updates dynamically
-
-### Checkout System (Week 8)
-
-* Order summary generated dynamically from basket
-* Full client-side form validation:
-
-  * Name, email, address, payment fields
-* Inline error messages for invalid inputs
-* Auto-formatting:
-
-  * Card number (#### #### #### ####)
-  * Expiry date (MM/YY)
-* Prevent checkout with empty basket (redirect)
-* Order confirmation message displayed
-* Basket cleared after successful order
-
-### UI & UX
-
-* Responsive design (desktop, tablet, mobile)
-* Bootstrap-based layout
-* Improved user experience with validation feedback
+Week 9 focused on validating the stability and reliability of the TechNest application through structured testing and refinement. At this stage, all core features were implemented, so the priority shifted to quality assurance and optimisation.
 
 ---
+
+## Objectives
+
+- Design and execute structured test cases  
+- Identify and fix bugs  
+- Validate basket persistence using localStorage  
+- Test checkout validation (including edge cases)  
+- Perform responsive testing across devices  
+- Refactor and clean up code  
+
+---
+
+## Testing Approach
+
+Testing was conducted using a **manual black-box testing approach**, focusing on user interactions rather than internal implementation.
+
+Areas tested:
+- Product listing, filtering and search  
+- Product detail page loading  
+- Basket functionality (add, update, remove)  
+- localStorage persistence  
+- Checkout validation  
+- Responsive layout  
+
+---
+
+## Key Test Cases
+
+| Test ID | Feature | Description |
+|--------|--------|-------------|
+| TC-01 | Product Listing | Products load correctly |
+| TC-06 | Basket | Add item to basket |
+| TC-09 | Persistence | Basket remains after refresh |
+| TC-12 | Checkout | Valid submission |
+| TC-13 | Responsive | Mobile layout |
+
+---
+
+## Fixes and Improvements
+
+- Fixed basket badge not updating consistently  
+- Added validation for missing URL parameters  
+- Improved checkout validation logic  
+- Fixed responsive layout issues  
+
+---
+
+## Code Refactoring
+
+- Removed unused code and console logs  
+- Improved variable naming  
+- Simplified logic in filtering and validation  
+
+---
+
+## Responsive Testing
+
+Tested using Chrome DevTools:
+- Mobile (375px)
+- Tablet (768px)
+- Desktop  
+
+Ensured proper layout and usability across all screen sizes.
+
+---
+
+## Current Status
+
+- All core features working correctly  
+- Major bugs resolved  
+- Application stable and ready for final submission  
+
+---
+
+## Known Limitations
+
+- No backend or real payment system  
+- Minor UI improvements possible  
+- No automated testing implemented  
+
+---
+
+## Git Commits (Week 9)
+
+```text
+week9: add test cases document
+week9: fix basket badge update issue
+week9: improve checkout validation
+week9: responsive fixes
+week9: refactor filtering logic
+```
 
 ## Technologies Used
 
@@ -188,6 +233,7 @@ technest-webapp/
 
 ---
 
+
 ## How to Run
 
 No installation or backend server is required.
@@ -206,22 +252,6 @@ Click Open with Live Server
 
 ---
 
-## Weekly Progress
-
-| Week    | Focus                                  | Status    |
-| ------- | -------------------------------------- | --------- |
-| Week 1  | Requirements, wireframes, architecture | Completed |
-| Week 2  | HTML structure                         | Completed |
-| Week 3  | CSS + CI setup                         | Completed |
-| Week 4  | Product model                          | Completed |
-| Week 5  | Dynamic rendering & filtering          | Completed |
-| Week 6  | Product detail + DevOps pipeline       | Completed |
-| Week 7  | Basket system                          | Completed |
-| Week 8  | Checkout & validation                  | Completed |
-| Week 9  | Testing & optimisation                 | Upcoming  |
-| Week 10 | Final submission                       | Upcoming  |
-
----
 
 ## Author
 

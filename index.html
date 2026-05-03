@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="icons/favicon.ico">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
@@ -18,7 +19,7 @@
             <a class="navbar-brand" href="index.html">Tech<span>Nest</span></a>
 
             <!-- Mobile toggle -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-nav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Basket icon always visible on mobile next to hamburger -->
@@ -30,7 +31,7 @@
 
 
             <!-- Nav Links -->
-            <div class="collapse navbar-collapse" id="navbar-nav">
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link active" href="index.html">Home</a>
@@ -102,10 +103,10 @@
                         final semester project at Atlantic Technological University.
                     </p>
                     <div class="footer-social">
-                        <a href="#" class="social-icon" title="Facebook">f</a>
-                        <a href="#" class="social-icon" title="Twitter / X">X</a>
-                        <a href="#" class="social-icon" title="Instagram">in</a>
-                        <a href="#" class="social-icon" title="YouTube">yt</a>
+                        <a href="https://www.facebook.com" target="_blank" rel="noopener" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.x.com" target="_blank" rel="noopener" class="social-icon" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://www.instagram.com" target="_blank" rel="noopener" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com" target="_blank" rel="noopener" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
 
@@ -125,9 +126,9 @@
                 <div class="col-md-2 col-6 mb-4 mb-md-0">
                     <p class="footer-heading">Info</p>
                     <ul class="footer-links">
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#aboutModal">About</a></li>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#contactModal">Contact</a></li>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#faqModal">FAQ</a></li>
                     </ul>
                 </div>
 
@@ -135,8 +136,8 @@
                 <div class="col-md-2 col-6">
                     <p class="footer-heading">Legal</p>
                     <ul class="footer-links">
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms &amp; Conditions</a></li>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a></li>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms &amp; Conditions</a></li>
                     </ul>
                 </div>
 
@@ -145,7 +146,7 @@
             <!-- Bottom Bar -->
             <div class="footer-bottom">
                 <p class="footer-copyright">
-                    &copy; 2025 TechNest. All rights reserved. Built by Muhammad Saleem &mdash; L00196822 &mdash; ATU.
+                    &copy; 2026 TechNest. All rights reserved.
                 </p>
             </div>
 
@@ -160,5 +161,253 @@
     <script src="js/pages/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+
+    <!-- ── About Modal ────────────────────────────────────────── -->
+    <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content footer-modal">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="aboutModalLabel">About TechNest</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>TechNest is a fictional electronics and gadgets retailer. The application was built entirely using front-end web technologies with no back-end server required.</p>
+                    <p>The aim of the project was to demonstrate practical skills in HTML, CSS, JavaScript and Object-Oriented Programming by building a realistic eCommerce experience from scratch. The site includes product browsing, filtering, a shopping basket with localStorage persistence, and a full checkout flow with client-side validation.</p>
+                    <h6 class="mt-4">Technologies Used</h6>
+                    <ul>
+                        <li>HTML5 and CSS3</li>
+                        <li>Bootstrap 5 for responsive layout</li>
+                        <li>Swiper.js for product carousels</li>
+                        <li>Vanilla JavaScript (ES6+)</li>
+                        <li>localStorage API for basket persistence</li>
+                    </ul>
+                    <h6 class="mt-4">Project Details</h6>
+                    <p>Built by Muhammad Saleem &mdash; Student No: L00196822<br>
+                    Module: PROJ_IT805 &mdash; Atlantic Technological University, 2025</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Contact Modal ──────────────────────────────────────── -->
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content footer-modal">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contactModalLabel">Contact Us</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>TechNest is a fictional store created for educational purposes. The contact details below are for demonstration only.</p>
+                    <h6 class="mt-3">Customer Support</h6>
+                    <p><i class="fas fa-envelope me-2 text-orange"></i> <a href="mailto:support@technest.ie" class="contact-link">support@technest.ie</a><br>
+                    <i class="fas fa-phone me-2 text-orange"></i> <a href="tel:+35312345678" class="contact-link">+353 1 234 5678</a><br>
+                    <i class="fas fa-clock me-2 text-orange"></i> Monday &ndash; Friday, 9am &ndash; 5pm</p>
+                    <h6 class="mt-3">Head Office</h6>
+                    <p><i class="fas fa-map-marker-alt me-2 text-orange"></i> 1 Tech Quarter, Galway, Ireland</p>
+                    <h6 class="mt-4">Send a Message</h6>
+                    <p class="text-muted small">This form is for demonstration purposes only and does not send any data.</p>
+                    <div class="mb-3">
+                        <label class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="contact-name" placeholder="John Smith">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="contact-email" placeholder="john@example.com">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Message</label>
+                        <textarea class="form-control" id="contact-message" rows="4" placeholder="How can we help?"></textarea>
+                    </div>
+                    <button class="btn btn-primary" id="contact-send-btn">Send Message</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── FAQ Modal ──────────────────────────────────────────── -->
+    <div class="modal fade" id="faqModal" tabindex="-1" aria-labelledby="faqModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content footer-modal">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="faqModalLabel">Frequently Asked Questions</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Do I need to create an account to shop?</h6>
+                    <p>No, you can browse and add items to your basket without an account. Your basket is saved in your browser so it will still be there if you refresh the page.</p>
+                    <h6 class="mt-3">How do I add items to my basket?</h6>
+                    <p>Click on any product to view its details page, choose a quantity and click the Add to Basket button. You can then continue shopping or go straight to checkout.</p>
+                    <h6 class="mt-3">Can I change the quantity in my basket?</h6>
+                    <p>Yes. On the basket page you will see a minus and plus button next to each item. You can also remove items entirely using the &times; button.</p>
+                    <h6 class="mt-3">What payment methods do you accept?</h6>
+                    <p>TechNest accepts all major debit and credit cards. Payment details entered on the checkout page are not stored or processed as this is a demonstration project.</p>
+                    <h6 class="mt-3">How long does delivery take?</h6>
+                    <p>Standard delivery takes 3 to 5 working days. Express delivery (1 to 2 working days) is available at checkout for an additional fee.</p>
+                    <h6 class="mt-3">Can I return an item?</h6>
+                    <p>Yes. TechNest accepts returns within 30 days of purchase provided the item is in its original condition and packaging. Please contact our support team to arrange a return.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Privacy Policy Modal ───────────────────────────────── -->
+    <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content footer-modal">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="privacyModalLabel">Privacy Policy</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-muted small">Last updated: May 2026. This is a demonstration document for a student project.</p>
+                    <h6>1. Information We Collect</h6>
+                    <p>TechNest only stores basket data locally in your browser using localStorage. No personal data is collected, stored on a server or shared with third parties. Any information entered on the checkout form is processed entirely within your browser and is not transmitted anywhere.</p>
+                    <h6 class="mt-3">2. Cookies</h6>
+                    <p>This site does not use tracking cookies or analytics. The only browser storage used is localStorage to save your basket contents between visits.</p>
+                    <h6 class="mt-3">3. Third-Party Services</h6>
+                    <p>This site loads Bootstrap and Swiper.js from CDN providers. These providers may log basic request data such as your IP address as part of normal CDN operation. Please refer to their respective privacy policies for details.</p>
+                    <h6 class="mt-3">4. Your Rights</h6>
+                    <p>You can clear your basket data at any time by clearing your browser's localStorage through your browser settings or developer tools.</p>
+                    <h6 class="mt-3">5. Contact</h6>
+                    <p>For any privacy related queries please contact us at <a href="mailto:support@technest.ie" class="contact-link">support@technest.ie</a>.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Terms and Conditions Modal ────────────────────────── -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content footer-modal">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="termsModalLabel">Terms &amp; Conditions</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-muted small">Last updated: May 2026. This is a demonstration document for a student project.</p>
+                    <h6>1. Use of the Site</h6>
+                    <p>TechNest is a fictional eCommerce store created for educational purposes as part of a student project at Atlantic Technological University. No real transactions take place and no goods are sold or shipped.</p>
+                    <h6 class="mt-3">2. Basket and Orders</h6>
+                    <p>Items added to your basket are stored locally in your browser. Completing the checkout form does not place a real order and no payment is taken. The checkout process is a demonstration of front-end form validation only.</p>
+                    <h6 class="mt-3">3. Product Information</h6>
+                    <p>All product names, descriptions and prices on this site are fictional and for demonstration purposes only. Any resemblance to real products is coincidental.</p>
+                    <h6 class="mt-3">4. Intellectual Property</h6>
+                    <p>The TechNest name, logo and site design are original works created for this student project. All third-party libraries used (Bootstrap, Swiper.js, Font Awesome) remain the property of their respective owners and are used under their open-source licences.</p>
+                    <h6 class="mt-3">5. Limitation of Liability</h6>
+                    <p>As this is a demonstration project, TechNest accepts no liability for any issues arising from use of this site. The site is provided as-is for academic assessment purposes.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Contact modal — validates all three fields, shows inline errors,
+        // confirms send and resets everything when the modal is closed.
+        // All custom JavaScript — Bootstrap only handles open/close.
+        (function () {
+            var modal        = document.getElementById('contactModal');
+            var btn          = document.getElementById('contact-send-btn');
+            var nameInput    = document.getElementById('contact-name');
+            var emailInput   = document.getElementById('contact-email');
+            var messageInput = document.getElementById('contact-message');
+
+            function isValidEmail(val) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val);
+            }
+
+            function showFieldError(input, msg) {
+                input.classList.add('is-invalid');
+                var err = input.parentNode.querySelector('.contact-field-error');
+                if (!err) {
+                    err = document.createElement('div');
+                    err.className = 'contact-field-error field-error';
+                    input.parentNode.appendChild(err);
+                }
+                err.textContent = msg;
+                err.style.display = 'block';
+            }
+
+            function clearFieldError(input) {
+                input.classList.remove('is-invalid');
+                var err = input.parentNode.querySelector('.contact-field-error');
+                if (err) err.style.display = 'none';
+            }
+
+            function clearAllErrors() {
+                [nameInput, emailInput, messageInput].forEach(function (el) {
+                    if (el) clearFieldError(el);
+                });
+            }
+
+            if (btn) {
+                btn.addEventListener('click', function () {
+                    clearAllErrors();
+                    var valid = true;
+
+                    var nameVal = nameInput ? nameInput.value.trim() : '';
+
+                    if (!nameVal) {
+                        showFieldError(nameInput, 'Please enter your name.');
+                        valid = false;
+                    } else if (!/^[A-Za-z][A-Za-z\s'\-]*$/.test(nameVal)) {
+                        showFieldError(nameInput, 'Name must start with a letter and contain only letters.');
+                        valid = false;
+                    }
+
+                    var emailVal = emailInput ? emailInput.value.trim() : '';
+                    if (!emailVal) {
+                        showFieldError(emailInput, 'Please enter your email address.');
+                        valid = false;
+                    } else if (!isValidEmail(emailVal)) {
+                        showFieldError(emailInput, 'Please enter a valid email (e.g. name@domain.com).');
+                        valid = false;
+                    }
+
+                    if (!messageInput || !messageInput.value.trim()) {
+                        showFieldError(messageInput, 'Please enter a message.');
+                        valid = false;
+                    }
+
+                    if (!valid) return;
+
+                    btn.textContent = 'Message Sent!';
+                    btn.disabled    = true;
+                    btn.classList.remove('btn-primary');
+                    btn.classList.add('btn-success-custom');
+                });
+            }
+
+            if (modal) {
+                modal.addEventListener('hidden.bs.modal', function () {
+                    if (btn) {
+                        btn.textContent = 'Send Message';
+                        btn.disabled    = false;
+                        btn.classList.remove('btn-success-custom');
+                        btn.classList.add('btn-primary');
+                    }
+                    if (nameInput)    nameInput.value    = '';
+                    if (emailInput)   emailInput.value   = '';
+                    if (messageInput) messageInput.value = '';
+                    clearAllErrors();
+                });
+            }
+        })();
+    </script>
 </body>
 </html>

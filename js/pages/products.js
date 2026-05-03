@@ -11,21 +11,17 @@
 // ============================================================
 
 // Categories shown on this page — order controls section order
+
 const CATEGORIES = ['Laptops', 'Phones', 'Audio', 'Gaming'];
 
-// ── State ────────────────────────────────────────────────────
 let activeCategory = 'All';
 let searchQuery    = '';
 let sortOrder      = 'price-asc';
 
-// Keeps references to each Swiper instance so they can be
-// destroyed and rebuilt when filters change
 let swiperInstances = [];
 
 
-// ── On page load ─────────────────────────────────────────────
-
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
 
     updateBasketBadge();
     checkUrlCategory();
@@ -38,19 +34,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // ── Render category sections ──────────────────────────────────
-// Clears and rebuilds all category sections based on current
-// state. Each visible section gets its own Swiper carousel.
 
 function renderSections() {
 
-    // Destroy any existing Swiper instances before rebuilding
-    swiperInstances.forEach(function (s) { s.destroy(true, true); });
+    swiperInstances.forEach(s => s.destroy(true, true));
     swiperInstances = [];
 
     const container  = document.getElementById('category-sections');
     const noResults  = document.getElementById('no-results');
 
-    // Work out which categories to show
     let categoriesToShow = CATEGORIES;
     if (activeCategory !== 'All') {
         categoriesToShow = [activeCategory];
@@ -59,35 +51,27 @@ function renderSections() {
     let html        = '';
     let totalShown  = 0;
 
-    categoriesToShow.forEach(function (cat) {
+    categoriesToShow.forEach(cat => {
 
-        // Get products for this category
-        let products = productsData.filter(function (p) {
-            return p.category === cat;
-        });
+        let products = productsData.filter(p => p.category === cat);
 
-        // Apply keyword search
         if (searchQuery.trim() !== '') {
             const q = searchQuery.toLowerCase();
-            products = products.filter(function (p) {
-                return p.name.toLowerCase().includes(q);
-            });
+            products = products.filter(p => p.name.toLowerCase().includes(q));
         }
 
-        // Apply sort
         if (sortOrder === 'price-asc') {
-            products.sort(function (a, b) { return a.price - b.price; });
+            products.sort((a, b) => a.price - b.price);
         } else if (sortOrder === 'price-desc') {
-            products.sort(function (a, b) { return b.price - a.price; });
+            products.sort((a, b) => b.price - a.price);
         }
 
         if (products.length === 0) return;
 
         totalShown += products.length;
 
-        // Build slides
         let slides = '';
-        products.forEach(function (p) {
+        products.forEach(p => {
             slides += `
                 <div class="swiper-slide">
                     <div class="product-card">
@@ -103,8 +87,6 @@ function renderSections() {
             `;
         });
 
-        // Build section with Swiper markup
-        // Each section gets a unique id so multiple Swipers work independently
         const swiperClass = `swiper-${cat.toLowerCase()}`;
         html += `
             <section class="category-section-block" data-category="${cat}">
@@ -125,15 +107,13 @@ function renderSections() {
 
     container.innerHTML = html;
 
-    // Show or hide the no results message
     if (totalShown === 0) {
         noResults.style.display = 'block';
         return;
     }
     noResults.style.display = 'none';
 
-    // Initialise a Swiper instance for each category section
-    categoriesToShow.forEach(function (cat) {
+    categoriesToShow.forEach(cat => {
         const swiperClass = `.swiper-${cat.toLowerCase()}`;
         const el = document.querySelector(swiperClass);
         if (!el) return;
@@ -167,9 +147,9 @@ function renderSections() {
 function setupFilterButtons() {
     const buttons = document.querySelectorAll('.filter-btn');
 
-    buttons.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            buttons.forEach(function (b) { b.classList.remove('active-filter'); });
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            buttons.forEach(b => b.classList.remove('active-filter'));
             btn.classList.add('active-filter');
             activeCategory = btn.dataset.category;
             renderSections();
@@ -184,7 +164,7 @@ function setupSearch() {
     const input = document.getElementById('search-input');
     if (!input) return;
 
-    input.addEventListener('input', function () {
+    input.addEventListener('input', () => {
         searchQuery = input.value;
         renderSections();
     });
@@ -199,7 +179,7 @@ function setupSort() {
 
     select.value = 'price-asc';
 
-    select.addEventListener('change', function () {
+    select.addEventListener('change', () => {
         sortOrder = select.value;
         renderSections();
     });
@@ -207,8 +187,6 @@ function setupSort() {
 
 
 // ── URL category check ────────────────────────────────────────
-// Reads ?category= from the URL so clicking a category button
-// on the home page arrives with the right section showing.
 
 function checkUrlCategory() {
     const params = new URLSearchParams(window.location.search);
@@ -218,7 +196,7 @@ function checkUrlCategory() {
     activeCategory = cat;
 
     const buttons = document.querySelectorAll('.filter-btn');
-    buttons.forEach(function (btn) {
+    buttons.forEach(btn => {
         btn.classList.remove('active-filter');
         if (btn.dataset.category === cat) {
             btn.classList.add('active-filter');
@@ -228,18 +206,15 @@ function checkUrlCategory() {
 
 
 // ── Basket badge ─────────────────────────────────────────────
-// Reads directly from localStorage in week 5 since StorageManager
-// is not created until week 7.
 
 function updateBasketBadge() {
     const saved = JSON.parse(localStorage.getItem('technest-basket') || '[]');
 
     let count = 0;
-    saved.forEach(function (item) {
+    saved.forEach(item => {
         count += item.qty;
     });
 
-    // Update both desktop and mobile badge
     const badge       = document.getElementById('basket-count');
     const badgeMobile = document.getElementById('basket-count-mobile');
 
