@@ -9,28 +9,21 @@
 //  Week 5 - Dynamic Rendering and Filtering
 // ============================================================
 
-document.addEventListener('DOMContentLoaded', function () {
-
+document.addEventListener('DOMContentLoaded', () => {
     updateBasketBadge();
     renderFeaturedProducts();
-
 });
 
 
 // ── Featured products ─────────────────────────────────────────
-// Picks the first product from each category and renders them
-// as cards in the featured products section on the home page.
 
 function renderFeaturedProducts() {
 
     const categories = ['Laptops', 'Phones', 'Audio', 'Gaming'];
     const featured   = [];
 
-    // Get the first product found for each category
-    categories.forEach(function (cat) {
-        const match = productsData.find(function (p) {
-            return p.category === cat;
-        });
+    categories.forEach(cat => {
+        const match = productsData.find(p => p.category === cat);
         if (match) {
             featured.push(match);
         }
@@ -39,18 +32,13 @@ function renderFeaturedProducts() {
     const container = document.getElementById('featured-products');
     if (!container) return;
 
-    let html = '';
-    featured.forEach(function (p) {
-        html += buildFeaturedCard(p);
-    });
+    const html = featured.map(p => buildFeaturedCard(p)).join('');
 
     container.innerHTML = html;
 }
 
 
 // ── Build featured card ───────────────────────────────────────
-// Same card structure as the products page so the styling is
-// consistent across both pages.
 
 function buildFeaturedCard(product) {
     return `
@@ -70,19 +58,15 @@ function buildFeaturedCard(product) {
 
 
 // ── Basket badge ─────────────────────────────────────────────
-// Updates the navbar basket count badge from localStorage.
-// Reads directly from localStorage in week 5 since StorageManager
-// is not created until week 7.
 
 function updateBasketBadge() {
     const saved = JSON.parse(localStorage.getItem('technest-basket') || '[]');
 
     let count = 0;
-    saved.forEach(function (item) {
+    saved.forEach(item => {
         count += item.qty;
     });
 
-    // Update both desktop and mobile badge
     const badge       = document.getElementById('basket-count');
     const badgeMobile = document.getElementById('basket-count-mobile');
 

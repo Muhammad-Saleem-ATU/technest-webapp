@@ -22,19 +22,18 @@ class Basket {
 
 
     // ── Add item ──────────────────────────────────────────────
-    // Adds a product to the basket. If it is already in the
-    // basket the quantity is increased rather than duplicating.
 
     addItem(product, qty) {
-        const existing = this.items.find(function (item) {
-            return item.id === product.id;
-        });
+
+        const productId = String(product.id);
+
+        const existing = this.items.find(item => item.id === productId);
 
         if (existing) {
             existing.qty += qty;
         } else {
             this.items.push({
-                id    : product.id,
+                id    : productId,
                 name  : product.name,
                 price : product.price,
                 image : product.image,
@@ -47,18 +46,17 @@ class Basket {
 
 
     // ── Update quantity ───────────────────────────────────────
-    // Updates the quantity of a basket item by product id.
-    // If the new quantity is 0 or less the item is removed.
 
     updateQty(id, qty) {
+
+        const productId = String(id);
+
         if (qty <= 0) {
-            this.removeItem(id);
+            this.removeItem(productId);
             return;
         }
 
-        const item = this.items.find(function (i) {
-            return i.id === id;
-        });
+        const item = this.items.find(i => i.id === productId);
 
         if (item) {
             item.qty = qty;
@@ -68,39 +66,35 @@ class Basket {
 
 
     // ── Remove item ───────────────────────────────────────────
-    // Removes an item from the basket by product id.
 
     removeItem(id) {
-        this.items = this.items.filter(function (item) {
-            return item.id !== id;
-        });
+
+        const productId = String(id);
+
+        this.items = this.items.filter(item => item.id !== productId);
         this.saveToStorage();
     }
 
 
     // ── Get total ─────────────────────────────────────────────
-    // Returns the total cost of all items combined.
 
     getTotal() {
-        return this.items.reduce(function (total, item) {
+        return this.items.reduce((total, item) => {
             return total + (item.price * item.qty);
         }, 0);
     }
 
 
     // ── Get count ─────────────────────────────────────────────
-    // Returns the total number of individual items across all
-    // entries. Used to update the navbar basket badge.
 
     getCount() {
-        return this.items.reduce(function (count, item) {
+        return this.items.reduce((count, item) => {
             return count + item.qty;
         }, 0);
     }
 
 
     // ── Is empty ──────────────────────────────────────────────
-    // Returns true if the basket has no items.
 
     isEmpty() {
         return this.items.length === 0;
@@ -108,8 +102,6 @@ class Basket {
 
 
     // ── Clear ─────────────────────────────────────────────────
-    // Empties the basket and clears localStorage.
-    // Called after a successful checkout.
 
     clear() {
         this.items = [];
@@ -125,12 +117,14 @@ class Basket {
 
 
     // ── Load from storage ─────────────────────────────────────
-    // Loads saved basket from localStorage on page load.
 
     loadFromStorage() {
         const saved = this.storage.load();
-        if (saved.length > 0) {
-            this.items = saved;
+        if (saved && saved.length > 0) {
+            this.items = saved.map(item => ({
+                ...item,
+                id: String(item.id)
+            }));
         }
     }
 

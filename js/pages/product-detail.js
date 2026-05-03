@@ -11,7 +11,7 @@
 //  Updated Week 7 - now uses Basket class for Add to Basket
 // ============================================================
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
 
     updateBasketBadge();
 
@@ -24,13 +24,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     renderProduct(product);
     setupAddToBasket(product);
-
 });
 
 
 // ── Get product from URL ──────────────────────────────────────
-// Reads the ?id= parameter from the URL and finds the matching
-// product in the productsData array. Returns null if not found.
 
 function getProductFromUrl() {
     const params = new URLSearchParams(window.location.search);
@@ -38,24 +35,18 @@ function getProductFromUrl() {
 
     if (!id) return null;
 
-    const product = productsData.find(function (p) {
-        return p.id === id;
-    });
+    const product = productsData.find(p => p.id === id);
 
     return product || null;
 }
 
 
 // ── Render product ────────────────────────────────────────────
-// Fills in all the placeholder elements in the HTML with the
-// real product data.
 
 function renderProduct(product) {
 
-    // Update the page title in the browser tab
     document.title = 'TechNest - ' + product.name;
 
-    // Fill in each element by id
     document.getElementById('product-image').src       = product.image;
     document.getElementById('product-image').alt       = product.name;
     document.getElementById('product-category').textContent = product.category;
@@ -66,8 +57,6 @@ function renderProduct(product) {
 
 
 // ── Not found ─────────────────────────────────────────────────
-// Shows an error message if the id in the URL does not match
-// any product. This can happen if someone types a wrong URL.
 
 function showNotFound() {
     const detail = document.getElementById('product-detail');
@@ -84,14 +73,12 @@ function showNotFound() {
 
 
 // ── Add to basket ─────────────────────────────────────────────
-// Reads the quantity input and uses the Basket class to add
-// the item to localStorage properly.
 
 function setupAddToBasket(product) {
     const btn = document.getElementById('add-to-basket-btn');
     if (!btn) return;
 
-    btn.addEventListener('click', function () {
+    btn.addEventListener('click', () => {
 
         const qtyInput = document.getElementById('quantity');
         const qty      = parseInt(qtyInput.value) || 1;
@@ -106,14 +93,12 @@ function setupAddToBasket(product) {
 
 
 // ── Button feedback ───────────────────────────────────────────
-// Briefly changes the button text to confirm the item was added
-// then resets it after 1.5 seconds.
 
 function showAddedFeedback(btn) {
     btn.textContent = 'Added!';
     btn.disabled    = true;
 
-    setTimeout(function () {
+    setTimeout(() => {
         btn.textContent = 'Add to Basket';
         btn.disabled    = false;
     }, 1500);
@@ -121,15 +106,13 @@ function showAddedFeedback(btn) {
 
 
 // ── Basket badge ─────────────────────────────────────────────
-// Reads directly from localStorage. StorageManager is not
-// created until week 7.
 
 function updateBasketBadge() {
     const storage = new StorageManager('technest-basket');
     const saved   = storage.load();
 
     let count = 0;
-    saved.forEach(function (item) {
+    saved.forEach(item => {
         count += item.qty;
     });
 

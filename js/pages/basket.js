@@ -10,25 +10,26 @@
 // ============================================================
 
 // One Basket instance used throughout this page
+
+// ============================================================
+//  js/pages/basket.js
+//  FIXED VERSION - Stable, ES6, correct event handling
+// ============================================================
+
 let basket;
 
-document.addEventListener('DOMContentLoaded', function () {
-
+document.addEventListener('DOMContentLoaded', () => {
     basket = new Basket();
 
     renderBasket();
     updateBasketBadge();
-
+    setupBasketEvents();
 });
 
 
 // ── Render basket ─────────────────────────────────────────────
-// Builds the full basket page content. Shows the empty state
-// message if there are no items, otherwise shows each item
-// row and updates the totals.
 
-function renderBasket() {
-
+const renderBasket = () => {
     const container = document.getElementById('basket-items');
     if (!container) return;
 
@@ -38,55 +39,46 @@ function renderBasket() {
         return;
     }
 
-    let html = '';
-    basket.items.forEach(function (item) {
-        html += buildItemRow(item);
-    });
-
+    const html = basket.items.map(item => buildItemRow(item)).join('');
     container.innerHTML = html;
 
-    // Hide the empty basket message
-    const emptyMsg = document.getElementById('empty-basket-message');
-    if (emptyMsg) emptyMsg.style.display = 'none';
-
-    setupQuantityControls();
-    setupRemoveButtons();
     updateTotals();
-}
+};
 
 
 // ── Build item row ────────────────────────────────────────────
-// Returns the HTML string for one basket item row.
 
-function buildItemRow(item) {
-    return `
-        <div class="basket-item" data-id="${item.id}">
-            <div class="basket-item-img">
-                <img src="${item.image}" alt="${item.name}">
-            </div>
-            <div class="basket-item-info">
-                <h5 class="basket-item-name">${item.name}</h5>
-                <p class="basket-item-price">&#8364;${item.price.toFixed(2)} each</p>
-            </div>
-            <div class="basket-item-qty">
-                <button class="qty-btn qty-decrease" data-id="${item.id}">&#8722;</button>
-                <span class="qty-value">${item.qty}</span>
-                <button class="qty-btn qty-increase" data-id="${item.id}">&#43;</button>
-            </div>
-            <div class="basket-item-subtotal">
-                &#8364;${(item.price * item.qty).toFixed(2)}
-            </div>
-            <div class="basket-item-remove">
-                <button class="remove-btn" data-id="${item.id}">&times;</button>
-            </div>
+const buildItemRow = (item) => `
+    <div class="basket-item" data-id="${item.id}">
+        <div class="basket-item-img">
+            <img src="${item.image}" alt="${item.name}">
         </div>
-    `;
-}
+
+        <div class="basket-item-info">
+            <h5 class="basket-item-name">${item.name}</h5>
+            <p class="basket-item-price">€${item.price.toFixed(2)} each</p>
+        </div>
+
+        <div class="basket-item-qty">
+            <button class="qty-btn qty-decrease" data-id="${item.id}">−</button>
+            <span class="qty-value">${item.qty}</span>
+            <button class="qty-btn qty-increase" data-id="${item.id}">+</button>
+        </div>
+
+        <div class="basket-item-subtotal">
+            €${(item.price * item.qty).toFixed(2)}
+        </div>
+
+        <div class="basket-item-remove">
+            <button class="remove-btn" data-id="${item.id}">&times;</button>
+        </div>
+    </div>
+`;
 
 
-// ── Show empty basket ─────────────────────────────────────────
+// ── Empty basket ──────────────────────────────────────────────
 
-function showEmptyBasket() {
+const showEmptyBasket = () => {
     const container = document.getElementById('basket-items');
     if (!container) return;
 
@@ -96,73 +88,68 @@ function showEmptyBasket() {
             <a href="products.html" class="btn btn-outline-orange">Continue Shopping</a>
         </div>
     `;
-}
+};
 
 
-// ── Quantity controls ─────────────────────────────────────────
-// Attaches click listeners to all + and - buttons.
+// ── Event handling (FINAL FIX) ─────────────────────────────────
 
-function setupQuantityControls() {
+const setupBasketEvents = () => {
+    const container = document.getElementById('basket-items');
+    if (!container) return;
 
-    document.querySelectorAll('.qty-increase').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            const id   = btn.dataset.id;
-            const item = basket.items.find(function (i) { return i.id === id; });
+    container.addEventListener('click', (e) => {
+
+        const btn = e.target.closest('button');
+        if (!btn) return;
+
+        const id = String(btn.dataset.id); 
+
+        //  Increase
+        if (btn.classList.contains('qty-increase')) {
+            const item = basket.items.find(i => String(i.id) === id);
             if (item) {
                 basket.updateQty(id, item.qty + 1);
-                renderBasket();
-                updateBasketBadge();
             }
-        });
-    });
+        }
 
-    document.querySelectorAll('.qty-decrease').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            const id   = btn.dataset.id;
-            const item = basket.items.find(function (i) { return i.id === id; });
+        //  Decrease
+        if (btn.classList.contains('qty-decrease')) {
+            const item = basket.items.find(i => String(i.id) === id);
             if (item) {
                 basket.updateQty(id, item.qty - 1);
-                renderBasket();
-                updateBasketBadge();
             }
-        });
+        }
+
+        //  Remove
+        if (btn.classList.contains('remove-btn')) {
+            basket.removeItem(id);
+        }
+
+        renderBasket();
+        updateBasketBadge();
     });
-}
+};
 
 
-// ── Remove buttons ────────────────────────────────────────────
+// ── Totals ────────────────────────────────────────────────────
 
-function setupRemoveButtons() {
-    document.querySelectorAll('.remove-btn').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            basket.removeItem(btn.dataset.id);
-            renderBasket();
-            updateBasketBadge();
-        });
-    });
-}
-
-
-// ── Update totals ─────────────────────────────────────────────
-// Updates the subtotal and total amounts in the order summary.
-
-function updateTotals() {
+const updateTotals = () => {
     const total    = basket.getTotal();
     const subtotal = document.getElementById('basket-subtotal');
     const totalEl  = document.getElementById('basket-total');
 
-    if (subtotal) subtotal.textContent = '\u20AC' + total.toFixed(2);
-    if (totalEl)  totalEl.textContent  = '\u20AC' + total.toFixed(2);
-}
+    if (subtotal) subtotal.textContent = '€' + total.toFixed(2);
+    if (totalEl)  totalEl.textContent  = '€' + total.toFixed(2);
+};
 
 
 // ── Basket badge ──────────────────────────────────────────────
 
-function updateBasketBadge() {
+const updateBasketBadge = () => {
     const count       = basket.getCount();
     const badge       = document.getElementById('basket-count');
     const badgeMobile = document.getElementById('basket-count-mobile');
 
     if (badge)       badge.textContent       = count;
     if (badgeMobile) badgeMobile.textContent = count;
-}
+};
