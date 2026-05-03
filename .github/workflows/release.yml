@@ -1,0 +1,32 @@
+name: Release Pipeline
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'   # triggers on version tags like v1.0.0
+
+permissions:
+  contents: write   # REQUIRED → fixes GitHub security warning
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          body: |
+            Automated release generated from CI/CD pipeline.
+
+            This demonstrates:
+            - Semantic versioning
+            - Automated release pipeline
+            - Continuous delivery practices
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
