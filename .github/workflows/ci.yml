@@ -40,7 +40,7 @@ jobs:
           else
             echo "No package.json found, skipping dependency audit"
           fi
-          
+
   build:
     runs-on: ubuntu-latest
     needs: validate
@@ -48,8 +48,23 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      # Create build folder and copy files
       - name: Build project
-        run: echo "Build successful"
+        run: |
+          mkdir build
+          cp -r *.html css js assets icons build/ 2>/dev/null || true
+
+      # Archive build output
+      - name: Archive build
+        run: zip -r technest-build.zip build
+
+      # Upload artifact
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: technest-build
+          path: technest-build.zip
 
   deploy:
     if: github.ref == 'refs/heads/main'
