@@ -149,12 +149,11 @@ week9: cross-device testing, patch mobile padding
 
 ## References
 
-- Bootstrap (2021) *Bootstrap 5.0 Documentation*. Available at: 
 ```md
+- Bootstrap (2021) *Bootstrap 5.0 Documentation*. Available at:
 https://getbootstrap.com/docs/5.0
-```
-- MDN Web Docs (2023) *JavaScript reference*. Available at: 
-```md
+
+- MDN Web Docs (2023) *JavaScript reference*. Available at:
 https://developer.mozilla.org/en-US/docs/Web/JavaScript
 ```
 - Flanagan, D. (2020) *JavaScript: The Definitive Guide*. 7th edn. O'Reilly Media.
