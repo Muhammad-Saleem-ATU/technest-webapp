@@ -87,7 +87,7 @@ Review test results and update the README. Make sure the setup instructions are 
 
 At least one commit per day with clear messages:
 
-```
+```text
 week9: add test cases document
 week9: fix basket badge update issue
 week9: refactor product filter function

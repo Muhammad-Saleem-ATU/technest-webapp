@@ -20,7 +20,10 @@ Users can browse products, filter and search the catalogue, add items to a baske
 
 The application is deployed and can be accessed directly online:
 
-**Live Demo:** https://gotechnest.netlify.app/
+**Live Demo:** 
+```bash
+https://gotechnest.netlify.app/
+```
 
 This is the recommended way to test the system.
 
@@ -45,7 +48,9 @@ python -m http.server
 ```
 
 Then open in your browser:
+```bash
 http://localhost:8000/
+```
 
 ---
 
@@ -144,7 +149,13 @@ week9: cross-device testing, patch mobile padding
 
 ## References
 
-- Bootstrap (2021) *Bootstrap 5.0 Documentation*. Available at: https://getbootstrap.com/docs/5.0
-- MDN Web Docs (2023) *JavaScript reference*. Available at: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+- Bootstrap (2021) *Bootstrap 5.0 Documentation*. Available at: 
+```bash
+https://getbootstrap.com/docs/5.0
+```
+- MDN Web Docs (2023) *JavaScript reference*. Available at: 
+```bash
+https://developer.mozilla.org/en-US/docs/Web/JavaScript
+```
 - Flanagan, D. (2020) *JavaScript: The Definitive Guide*. 7th edn. O'Reilly Media.
 - Osmani, A. (2022) *Learning JavaScript Design Patterns*. 2nd edn. O'Reilly Media.

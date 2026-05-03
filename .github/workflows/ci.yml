@@ -18,7 +18,7 @@ jobs:
       - name: Validate HTML
         run: |
           npm install -g htmlhint
-          htmlhint "**/*.html"
+          htmlhint --config .htmlhintrc "**/*.html"
 
       # CSS linting
       - name: Lint CSS
