@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*.*.*'   # triggers on version tags like v1.0.0
 
+permissions:
+  contents: write   # REQUIRED → fixes GitHub security warning
+
 jobs:
   release:
     runs-on: ubuntu-latest
