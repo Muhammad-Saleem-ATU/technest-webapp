@@ -1,9 +1,9 @@
 # TechNest – Front-End eCommerce Web Application
 
-**Student:** Muhammad Saleem  
-**Student No:** L00196822  
-**Course:** BSc Honours in Contemporary Software Development  
-**University:** Atlantic Technological University  
+**Student:** Muhammad Saleem
+**Student No:** L00196822
+**Course:** BSc Honours in Contemporary Software Development
+**University:** Atlantic Technological University
 **Week:** 9 – Testing and Refinement
 
 ---
@@ -20,7 +20,7 @@ Users can browse products, filter and search the catalogue, add items to a baske
 
 The application is deployed and can be accessed directly online:
 
-**Live Demo:** 
+**Live Demo:**
 ```bash
 https://gotechnest.netlify.app/
 ```
@@ -48,7 +48,7 @@ python -m http.server
 ```
 
 Then open in your browser:
-```bash
+```md
 http://localhost:8000/
 ```
 
@@ -150,11 +150,11 @@ week9: cross-device testing, patch mobile padding
 ## References
 
 - Bootstrap (2021) *Bootstrap 5.0 Documentation*. Available at: 
-```bash
+```md
 https://getbootstrap.com/docs/5.0
 ```
 - MDN Web Docs (2023) *JavaScript reference*. Available at: 
-```bash
+```md
 https://developer.mozilla.org/en-US/docs/Web/JavaScript
 ```
 - Flanagan, D. (2020) *JavaScript: The Definitive Guide*. 7th edn. O'Reilly Media.
