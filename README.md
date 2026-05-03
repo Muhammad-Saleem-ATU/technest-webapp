@@ -1,6 +1,8 @@
 # TechNest - Front-End eCommerce Web Application
 [![CI/CD Pipeline](https://github.com/Muhammad-Saleem-ATU/technest-webapp/actions/workflows/ci.yml/badge.svg)](https://github.com/Muhammad-Saleem-ATU/technest-webapp/actions/workflows/ci.yml)
 
+![Release](https://img.shields.io/github/v/release/Muhammad-Saleem-ATU/technest-webapp)
+
 TechNest is a client-side eCommerce web application built for a fictional electronics and gadgets retailer. It is being developed as part of a final semester project at Atlantic Technological University.
 
 The application allows users to browse products, filter and search the catalogue, view individual product pages, manage a shopping basket, and complete a checkout process. All functionality is implemented on the client side, with no server or backend required.
