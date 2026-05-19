@@ -9,6 +9,10 @@
 //  Week 5 - Dynamic Rendering and Filtering
 // ============================================================
 
+const products =
+    JSON.parse(localStorage.getItem('technest-products'))
+    || productsData;
+
 document.addEventListener('DOMContentLoaded', () => {
     updateBasketBadge();
     renderFeaturedProducts();
@@ -23,7 +27,7 @@ function renderFeaturedProducts() {
     const featured   = [];
 
     categories.forEach(cat => {
-        const match = productsData.find(p => p.category === cat);
+        const match = products.find(p => p.category === cat);
         if (match) {
             featured.push(match);
         }

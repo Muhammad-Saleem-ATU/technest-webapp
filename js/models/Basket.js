@@ -1,15 +1,5 @@
 // ============================================================
 //  js/models/Basket.js
-//  ES6 class handling all shopping basket logic in TechNest.
-//  Works with StorageManager to keep basket contents saved
-//  across page navigation via localStorage.
-//
-//  Each item in the basket is stored as a flat object:
-//  { id, name, price, image, qty }
-//
-//  Author : Muhammad Saleem
-//  Student: L00196822
-//  Week 7 - Basket CRUD and localStorage Integration
 // ============================================================
 
 class Basket {
@@ -29,6 +19,14 @@ class Basket {
 
         const existing = this.items.find(item => item.id === productId);
 
+        const currentQty = existing ? existing.qty : 0;
+
+        // Prevent adding beyond stock
+        if (currentQty + qty > product.stock) {
+            alert(`Only ${product.stock} items available.`);
+            return false;
+        }
+
         if (existing) {
             existing.qty += qty;
         } else {
@@ -42,6 +40,7 @@ class Basket {
         }
 
         this.saveToStorage();
+        return true;
     }
 
 
@@ -53,15 +52,39 @@ class Basket {
 
         if (qty <= 0) {
             this.removeItem(productId);
-            return;
+            return true;
         }
 
-        const item = this.items.find(i => i.id === productId);
+        const item = this.items.find(
+            i => String(i.id) === productId
+        );
+
+        const products =
+            JSON.parse(localStorage.getItem('technest-products'))
+            || productsData;
+
+        const product = products.find(
+            p => String(p.id) === productId
+        );
+
+        // Prevent increasing beyond stock
+        if (product && qty > product.stock) {
+
+            alert(`Only ${product.stock} items available.`);
+
+            return false;
+        }
 
         if (item) {
+
             item.qty = qty;
+
             this.saveToStorage();
+
+            return true;
         }
+
+        return false;
     }
 
 
@@ -120,6 +143,7 @@ class Basket {
 
     loadFromStorage() {
         const saved = this.storage.load();
+
         if (saved && saved.length > 0) {
             this.items = saved.map(item => ({
                 ...item,
@@ -127,5 +151,4 @@ class Basket {
             }));
         }
     }
-
 }

@@ -12,7 +12,13 @@
 
 // Categories shown on this page — order controls section order
 
-const CATEGORIES = ['Laptops', 'Phones', 'Audio', 'Gaming'];
+const allProducts =
+    JSON.parse(localStorage.getItem('technest-products'))
+    || productsData;
+
+const CATEGORIES = [
+    ...new Set(allProducts.map(p => p.category))
+];
 
 let activeCategory = 'All';
 let searchQuery    = '';
@@ -53,7 +59,7 @@ function renderSections() {
 
     categoriesToShow.forEach(cat => {
 
-        let products = productsData.filter(p => p.category === cat);
+        let products = allProducts.filter(p => p.category === cat);
 
         if (searchQuery.trim() !== '') {
             const q = searchQuery.toLowerCase();
