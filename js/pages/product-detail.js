@@ -10,6 +10,9 @@
 //  Week 6 - Product Detail Page
 //  Updated Week 7 - now uses Basket class for Add to Basket
 // ============================================================
+const products =
+    JSON.parse(localStorage.getItem('technest-products'))
+    || productsData;
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -35,7 +38,9 @@ function getProductFromUrl() {
 
     if (!id) return null;
 
-    const product = productsData.find(p => p.id === id);
+    const product = products.find(
+		p => String(p.id) === String(id)
+	);
 
     return product || null;
 }
@@ -47,12 +52,19 @@ function renderProduct(product) {
 
     document.title = 'TechNest - ' + product.name;
 
-    document.getElementById('product-image').src       = product.image;
-    document.getElementById('product-image').alt       = product.name;
+    document.getElementById('product-image').src = product.image;
+    document.getElementById('product-image').alt = product.name;
+
     document.getElementById('product-category').textContent = product.category;
-    document.getElementById('product-name').textContent     = product.name;
+
+    document.getElementById('product-name').textContent = product.name;
+
     document.getElementById('product-description').textContent = product.description;
-    document.getElementById('product-price').textContent    = '\u20AC' + product.price.toFixed(2);
+
+    document.getElementById('product-price').textContent = '\u20AC' + product.price.toFixed(2);
+
+    // Dynamic stock limit
+    document.getElementById('quantity').max = product.stock;
 }
 
 
@@ -84,10 +96,14 @@ function setupAddToBasket(product) {
         const qty      = parseInt(qtyInput.value) || 1;
 
         const basket = new Basket();
-        basket.addItem(product, qty);
+        const added = basket.addItem(product, qty);
 
-        updateBasketBadge();
-        showAddedFeedback(btn);
+		if (!added) {
+			return;
+		}
+
+		updateBasketBadge();
+		showAddedFeedback(btn);
     });
 }
 

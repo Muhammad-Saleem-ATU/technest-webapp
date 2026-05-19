@@ -4,7 +4,10 @@
 
 const basket = new Basket();
 
-
+const products =
+    JSON.parse(localStorage.getItem('technest-products'))
+    || productsData;
+	
 // ── On page load ─────────────────────────────────────────────
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -71,9 +74,12 @@ function setupForm() {
         }
 
         // Payment rules
-        if (!validatePaymentDetails()) return;
+		if (!validatePaymentDetails()) return;
 
-        placeOrder();
+		// Final stock validation before checkout
+		if (!validateStockBeforeCheckout()) return;
+
+		placeOrder();
     });
 }
 
@@ -191,21 +197,75 @@ function validatePaymentDetails() {
     return valid;
 }
 
+// ── Final stock validation ───────────────────────────────────
+
+function validateStockBeforeCheckout() {
+
+    for (const item of basket.items) {
+
+        const product = products.find(
+            p => String(p.id) === String(item.id)
+        );
+
+        // Product removed by admin
+        if (!product) {
+
+            alert(`${item.name} is no longer available.`);
+
+            return false;
+        }
+
+        // Basket quantity exceeds stock
+        if (item.qty > product.stock) {
+
+            alert(
+                `Only ${product.stock} units of ${product.name} available.`
+            );
+
+            return false;
+        }
+    }
+
+    return true;
+}
 
 // ── Place order ───────────────────────────────────────────────
 
 function placeOrder() {
 
+    // Reduce stock after successful order
+    basket.items.forEach(item => {
+
+        const product = products.find(
+            p => String(p.id) === String(item.id)
+        );
+
+        if (product) {
+            product.stock -= item.qty;
+        }
+    });
+
+    // Save updated products
+    localStorage.setItem(
+        'technest-products',
+        JSON.stringify(products)
+    );
+
     basket.clear();
+
     updateBasketBadge();
 
     const checkoutContent = document.getElementById('checkout-content');
     const confirmation    = document.getElementById('confirmation-message');
 
     if (checkoutContent) checkoutContent.classList.add('d-none');
-    if (confirmation)    confirmation.classList.remove('d-none');
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (confirmation) confirmation.classList.remove('d-none');
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 }
 
 

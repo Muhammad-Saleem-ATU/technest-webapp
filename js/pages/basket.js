@@ -17,6 +17,9 @@
 // ============================================================
 
 let basket;
+const products =
+    JSON.parse(localStorage.getItem('technest-products'))
+    || productsData;
 
 document.addEventListener('DOMContentLoaded', () => {
     basket = new Basket();
