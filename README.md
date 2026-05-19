@@ -112,6 +112,7 @@ week9: fix basket badge update issue
 week9: improve checkout validation
 week9: responsive fixes
 week9: refactor filtering logic
+week10: Add admin section and logic
 ```
 
 ## Technologies Used
